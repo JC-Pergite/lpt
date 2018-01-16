@@ -5,7 +5,8 @@ const appRoutes: Routes = [
       { path: 'home', redirectTo: 'home', pathMatch: 'full' },
       { path: 'about', redirectTo: 'about', pathMatch: 'full' },
       { path: 'menu', redirectTo: 'menu', pathMatch: 'full' },      
-  	  { path: 'contact-reserve', redirectTo: 'contact-reserve', pathMatch: 'full' }
+  	  { path: 'contact-reserve', redirectTo: 'contact-reserve', pathMatch: 'full' },
+      { path: 'popup-wiki', redirectTo: 'popup-wiki', pathMatch: 'full' }   
 ];
 
 @NgModule({

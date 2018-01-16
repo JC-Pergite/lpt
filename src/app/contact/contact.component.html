@@ -1,3 +1,59 @@
-<p>
-  contact works!
-</p>
+<div class="whichMeal">
+  <p class="beOurGuest">Shall you be joining us for 
+    <span (click)="dinner = !dinner"> {{this.meal[0]}} (12 - 16pm) </span> or 
+    <span (click)="dinner = !dinner">{{this.meal[1]}} (19 - 23pm)</span> ?
+  </p>
+</div>  
+<form class="form-horizontal" novalidate (ngSubmit)="onSubmit(reserve)" [formGroup]="reserve">
+  <fieldset>
+    <div class="form-group party" has-warning>
+      <label for="inputParty" class="col-lg-2 control-label">Party Size:</label>
+      <div class="col-lg-10">
+        <input type="number" class="form-control is-valid" id="inputSize"
+             placeholder="Party Size" 
+             formControlName="party"
+        /> 
+      </div>
+    </div>
+    <div class="form-group name" has-warning>
+      <label for="inputName" class="col-lg-2 control-label">Reservation Name:</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control is-valid" id="inputValid"
+             placeholder="Reservation Name" 
+             formControlName="name"
+        /> 
+      </div>
+    </div>  
+    <div class="form-group" id="tickTok">
+      <ngb-timepicker [(ngModel)]="time" [formControl]="ctrl" required></ngb-timepicker>
+      <div *ngIf="!dinner; then lunchh else dinnner"></div>
+      <ng-template #lunchh>
+        <p class="meal"> {{this.meal[0]}}</p>
+      </ng-template>  
+      <ng-template #dinnner>
+        <p class="meal"> {{this.meal[1]}}</p>
+      </ng-template>  
+      <div *ngIf="ctrl.valid" class="small form-text text-success" id="validate">Great choice</div>
+      <div class="small form-text text-danger" id="validate" *ngIf="!ctrl.valid">
+        <div *ngIf="ctrl.errors['required']">Select some time during lunchtime</div>
+        <div *ngIf="ctrl.errors['tooLate']">Oh no, it's way too late</div>
+        <div *ngIf="ctrl.errors['tooEarly']">It's a bit too early</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <my-date-picker name="mydate" [options]="myDatePickerOptions"
+          formControlName="myDate"></my-date-picker>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-outline-success" [disabled]="reserve.invalid">
+          Submit
+       	</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+<hr>
+<pre>Selected time: {{time | json}}</pre>
