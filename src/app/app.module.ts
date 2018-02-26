@@ -13,7 +13,6 @@ import { MainModule } from './main.module';
 import { MenuDataService } from './menu-data.service';
 import { PopupWikiComponent } from './wiki/popup-wiki.component';
 
-
 @NgModule({
   declarations: [ AppComponent, PopupWikiComponent ],
   imports: [

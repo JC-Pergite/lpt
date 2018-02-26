@@ -1,0 +1,26 @@
+ul {
+	list-style: none;
+}
+
+h4 {
+	margin-top: .8em;
+}	
+
+.strikeThru {
+	text-decoration: line-through;
+    margin-bottom: -.6em;
+}
+
+span#allergyWarning {
+	position: relative;
+    left: 22%;
+    top: -.6em;
+    font-size: 1.1em;
+    font-weight: 400;
+    font-variant: all-small-caps;
+    color: indianred;
+}
+
+p.dishDetails {
+    margin-bottom: 1.7em !important;
+}

@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
+import { MenuService } from './menu/menu.service';
 
 @NgModule ({
 	imports: [ SharedModule, mainRouting ], 
@@ -15,6 +16,6 @@ import { ContactComponent } from './contact/contact.component';
 					MenuComponent,
 					ContactComponent
 				  ],
-	providers: [ ]
+	providers: [ MenuService ]
 })
 export class MainModule { }

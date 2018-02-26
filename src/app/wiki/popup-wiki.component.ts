@@ -38,4 +38,5 @@ export class PopupWikiComponent implements OnInit {
   investigate(ingredient) {
     this.popupWikiService.define(ingredient).subscribe(termInfo => this.description = termInfo);
   }
+  
 }
