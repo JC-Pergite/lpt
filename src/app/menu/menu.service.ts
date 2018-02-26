@@ -21,14 +21,12 @@ export class MenuService {
 
 	constructor(private http: Http) {}
 
-	setAllergies(allergy) {
-		this.allergies.push(allergy);
-    this.allergySubject.next(this.allergies);
-	}
-
-	getAllergies() {
-		return this.allergySubject.value;
-	}
+	getMenu(): Observable<Menu[]>  {
+	   return this.http
+	   .get(`${this.menuUrl}`)
+	   .map((res:Response) => res.json() || {})
+     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
+  }
 
 	setMenu(menu) {
     this.menuSubject.next(menu);
@@ -45,11 +43,23 @@ export class MenuService {
     this.menuSubject.next(this.userMenu);
 	}
 
-	getMenu(): Observable<Menu[]>  {
-	   return this.http
-	   .get(`${this.menuUrl}`)
-	   .map((res:Response) => res.json() || {})
-     .catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
-  }
+  setAllergies(allergy) {
+		this.allergies.push(allergy);
+    this.allergySubject.next(this.allergies);
+	}
+
+	getAllergies() {
+		return this.allergySubject.value;
+	}
+
+	removeAllergy(allergy) {
+		for (var i = 0; i < this.allergies.length; i++) {
+      if (allergy.type == this.allergies[i]) {
+      	let takeBack = this.allergies.indexOf(this.allergies[i]);
+      	this.allergies.splice(takeBack, 1);
+  	    this.allergySubject.next(this.allergies);
+      }
+		}
+	}	
 
 }	

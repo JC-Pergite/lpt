@@ -41,6 +41,4 @@ export class AboutComponent implements OnInit {
    		   	this.chefBio = [false];
    	}
   }
-
-
 }

@@ -57,7 +57,9 @@
 </form>
 <hr>
 <div *ngIf="reserve.valid">
-  <pre>Selected Time: {{time | json}}</pre>
-  <p>We'll be sure to stay clear of these for you: </p>
-  <li>{{allergies}}</li>
+  <pre>
+    <span>Selected Time: {{time | json}}</span>
+    <p>We'll be sure to stay clear of these for you:</p>
+    <span>{{allergies}}</span>
+  </pre>
 </div>  

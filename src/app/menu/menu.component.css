@@ -1,10 +1,32 @@
+div.allergies {
+    margin-bottom: -1em;
+}
+
+.mainAllergies {
+    margin-left: .7em;
+}
+
 ul {
 	list-style: none;
 }
 
+label {
+    margin-left: 1.7%;
+}
+
+label, li.notAllergic::first-letter {
+    text-transform: capitalize;
+}  
+
 h4 {
+    font-size: 14px;
 	margin-top: .8em;
 }	
+
+h3 {
+    font-size: 23px;
+    margin-left: 2.8%;
+}
 
 .strikeThru {
 	text-decoration: line-through;
@@ -23,4 +45,28 @@ span#allergyWarning {
 
 p.dishDetails {
     margin-bottom: 1.7em !important;
+}
+
+.btn.btn-outline-danger {
+    margin-left: 1%;
+    font-size: .8em;
+    padding-bottom: 13pt;
+    text-indent: -.27em;
+    height: .5em;
+    width: 1.3em;
+    background: none;
+    border: none;
+    color: #d22b4a;
+}
+
+.btn.btn-outline-danger:hover {
+    font-weight: bold;
+} 
+
+li.notAllergic {
+    list-style: none;
+    position: relative;
+    left: 3.7%;
+    top:  -1.4em;
+    font-weight: 700;
 }

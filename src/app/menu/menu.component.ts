@@ -28,46 +28,65 @@ import { PopupWikiService } from '../wiki/popup-wiki.service';
   	</div>
   	<div>
 	    <h3>Allergens</h3>
-	    <div *ngFor="let allergy of allergens">
-	        <label>
-		        <input type="radio" name="allergy" [value]="allergy.value" (click)="allergyCheck(allergy)">
-            {{allergy?.type}}
-	        </label>
+	    <div *ngFor="let allergy of allergens" class="mainAllergies">
+       <div *ngIf="!allergy.sensitivity; then notAllergic else allergic" class="allergies">
+       </div>
+          <ng-template #notAllergic>
+  	        <label>
+  		        <input type="radio" name="allergy" [value]="allergy.value" 
+                (click)="allergyCheck(allergy)" />
+              {{allergy.type}}
+  	        </label>
+          </ng-template>
+          <ng-template #allergic>
+            <button type="button" (click)="removeAllergy(allergy)" class="btn btn-outline-danger">
+              X
+            </button>
+            <li class="notAllergic">{{allergy.type}}</li>
+          </ng-template>
 	    </div>
 	</div>  
 	`,
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush  
 })
 export class MenuComponent implements OnInit {
   private allergens = [
-  	{id: 0, value: 'eggs', type: 'eggs'},
-  	{id: 1, value: 'fish', type: 'fish'},
-  	{id: 2, value: 'gluten', type: 'gluten'},
-  	{id: 3, value: 'milk', type: 'milk'},
-  	{id: 4, value: 'peanuts', type: 'peanuts'},
-  	{id: 5, value: 'shellfish', type: 'shellfish'},
-  	{id: 6, value: 'soy', type: 'soy'},
-  	{id: 7, value: 'treenuts', type: 'treenuts'}
+  	{id: 0, value: 'eggs', type: 'eggs', sensitivity: false},
+  	{id: 1, value: 'fish', type: 'fish', sensitivity: false},
+  	{id: 2, value: 'gluten', type: 'gluten', sensitivity: false},
+  	{id: 3, value: 'milk', type: 'milk', sensitivity: false},
+  	{id: 4, value: 'peanuts', type: 'peanuts', sensitivity: false},
+  	{id: 5, value: 'shellfish', type: 'shellfish', sensitivity: false},
+  	{id: 6, value: 'soy', type: 'soy', sensitivity: false},
+  	{id: 7, value: 'treenuts', type: 'treenuts', sensitivity: false}
   ];
 
   private dishes: Menu[] = [];
   warning = " **This dish contains ";
-  allergies = [];
 
   constructor(private route: ActivatedRoute, private menuService: MenuService,
   	          private router: Router, private detect: ChangeDetectorRef, 
-              private wiki: PopupWikiService) { }
+              private wiki: PopupWikiService) { 
+  }
 
   ngOnInit() {
     if(this.menuService.theMenu().length) {
       let flatten = this.menuService.theMenu();
       this.dishes = flatten[0];
+      for (var i = 0; i < this.allergens.length; i++) {
+        if (this.menuService.allergies.find((thing: any) => thing ==  this.allergens[i].type )) {   
+          this.allergens[i].sensitivity = true;
+          this.detect.markForCheck();
+        }  
+      }
     }
     else {
       this.menuService.getMenu()
         .subscribe(menuItems => { 
           this.dishes = menuItems; 
           this.menuService.setMenu(menuItems);
+          this.detect.markForCheck();
         });
     }
   }
@@ -83,6 +102,21 @@ export class MenuComponent implements OnInit {
         this.detect.markForCheck();
       }
     }
+    allergy.sensitivity = true;
+  }
+
+  removeAllergy(allergy) {
+    this.menuService.removeAllergy(allergy);
+    for (var i = 0; i < this.dishes.length; i++) {
+      if (allergy.type == this.dishes[i].allergens) {
+        let allergicTo = this.dishes[i].id;
+        let noWorries = { susceptibleTo: '', susceptible: false };
+        this.dishes[allergicTo]['allergic'][0] = noWorries;
+        this.menuService.updateMenu(this.dishes[allergicTo]);
+        this.detect.markForCheck();
+      }
+    }
+    allergy.sensitivity = false;
   }
 
   lookUp(term) {
