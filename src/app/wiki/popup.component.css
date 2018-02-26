@@ -1,0 +1,48 @@
+p {
+    font-size: 0.9em;
+    text-align: justify;
+    color: brown !important;
+}
+
+div.modal.wiki {
+    display: flex;
+    width: 280px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    left: 61.5%;
+    top: 6%;
+    height: fit-content;
+}
+
+div.modal-content.wiki {
+	background: rgba(39, 43, 48, 0.87) !important;
+    border-radius: 14px !important;
+}
+
+ul.wiki{
+    flex: 1 0 12em;
+	color: #5167F4;
+}
+
+li {
+	font-size: 1em;
+    color: floralwhite;
+	list-style-type: circle;
+    overflow-wrap: break-word;
+}
+
+li:hover {
+    cursor: pointer;
+} 
+
+li::first-letter {
+    text-transform: capitalize;
+}    
+
+button.btn.btn-outline-danger {
+    position: absolute;
+}
+
+div.modal-footer {
+    border: 1px solid;
+}

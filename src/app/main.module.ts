@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { MenuService } from './menu/menu.service';
 import { ClickifyPipe } from './menu/clickify.pipe';
+import { PopupWikiService } from './wiki/popup-wiki.service';
 
 
 @NgModule ({
@@ -19,6 +20,6 @@ import { ClickifyPipe } from './menu/clickify.pipe';
 					ContactComponent,
 					ClickifyPipe
 				  ],
-	providers: [ MenuService ]
+	providers: [ MenuService, PopupWikiService ]
 })
 export class MainModule { }

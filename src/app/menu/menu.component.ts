@@ -1,9 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, 
+  EventEmitter, Output, ViewChild  } from '@angular/core';
 import { Router, ActivatedRoute, Params }  from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Menu } from '../shared/menu';
 import { MenuService } from './menu.service';
+import { PopupWikiService } from '../wiki/popup-wiki.service';
 
 @Component({
   selector: 'lpt-menu',
@@ -22,6 +24,7 @@ import { MenuService } from './menu.service';
           </p>
   			</li>
   		</ul>
+      <router-outlet name="wikiPopup"></router-outlet>
   	</div>
   	<div>
 	    <h3>Allergens</h3>
@@ -52,7 +55,8 @@ export class MenuComponent implements OnInit {
   allergies = [];
 
   constructor(private route: ActivatedRoute, private menuService: MenuService,
-  	          private router: Router, private detect: ChangeDetectorRef) { }
+  	          private router: Router, private detect: ChangeDetectorRef, 
+              private wiki: PopupWikiService) { }
 
   ngOnInit() {
     if(this.menuService.theMenu().length) {
@@ -82,7 +86,10 @@ export class MenuComponent implements OnInit {
   }
 
   lookUp(term) {
-    console.log(term);
+    if(term.length !< 15) {
+      this.wiki.searchTerm(term);
+      this.router.navigate([{ outlets: { wikiPopup: ['wikiSearch'] } }]);
+    }
   }
 
 }      

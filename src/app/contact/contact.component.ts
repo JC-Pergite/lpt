@@ -37,7 +37,8 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: string, valid: boolean }) {
-    	console.log(value);
+    	console.log('Reservation Info: ', value);
+      console.log('Guest Allergies: ', this.allergies);
   }
 
   setDate(): void {
