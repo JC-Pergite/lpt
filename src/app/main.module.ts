@@ -7,6 +7,8 @@ import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { MenuService } from './menu/menu.service';
+import { ClickifyPipe } from './menu/clickify.pipe';
+
 
 @NgModule ({
 	imports: [ SharedModule, mainRouting ], 
@@ -14,7 +16,8 @@ import { MenuService } from './menu/menu.service';
 					HomeComponent,
 					AboutComponent,
 					MenuComponent,
-					ContactComponent
+					ContactComponent,
+					ClickifyPipe
 				  ],
 	providers: [ MenuService ]
 })

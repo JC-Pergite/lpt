@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import { Menu } from '../shared/menu';
 import { MenuService } from './menu.service';
 
-
 @Component({
   selector: 'lpt-menu',
   // templateUrl: './menu.component.html',
@@ -18,7 +17,9 @@ import { MenuService } from './menu.service';
           <span id="allergyWarning" *ngIf="dish.allergic[0].susceptible">
               {{warning}} {{dish.allergic[0].susceptibleTo}}
           </span>
-  				<p class="dishDetails">{{dish?.description}}</p>
+  				<p class="dishDetails" [innerHTML]="dish.description | clickify"
+            (click)="lookUp($event.toElement.innerHTML)">
+          </p>
   			</li>
   		</ul>
   	</div>
@@ -78,6 +79,10 @@ export class MenuComponent implements OnInit {
         this.detect.markForCheck();
       }
     }
+  }
+
+  lookUp(term) {
+    console.log(term);
   }
 
 }      
