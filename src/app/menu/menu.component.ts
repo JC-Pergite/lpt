@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Menu } from '../shared/menu';
 import { MenuService } from './menu.service';
 import { PopupWikiService } from '../wiki/popup-wiki.service';
+import { PopupPicsComponent } from './popup-pics.component';
 
 @Component({
   selector: 'lpt-menu',
@@ -15,15 +16,18 @@ import { PopupWikiService } from '../wiki/popup-wiki.service';
   	<div *ngFor="let dish of dishes">
   		<ul>
   			<li>
-          <h4 [ngClass]="{'strikeThru': dish.allergic[0].susceptible}">{{dish?.name}}</h4>
+          <h4 [ngClass]="{'strikeThru': dish.allergic[0].susceptible}" (click)="viewDishPic(dish)">
+          {{dish?.name}}
+          </h4>
           <span id="allergyWarning" *ngIf="dish.allergic[0].susceptible">
               {{warning}} {{dish.allergic[0].susceptibleTo}}
           </span>
-  				<p class="dishDetails" [innerHTML]="dish.description | clickify"
+  				<p class="dishDetails" [innerHTML]="dish?.description | clickify"
             (click)="lookUp($event.toElement.innerHTML)">
           </p>
   			</li>
   		</ul>
+      <router-outlet name="dishPopup"></router-outlet>
       <router-outlet name="wikiPopup"></router-outlet>
   	</div>
   	<div>
@@ -51,6 +55,11 @@ import { PopupWikiService } from '../wiki/popup-wiki.service';
   changeDetection: ChangeDetectionStrategy.OnPush  
 })
 export class MenuComponent implements OnInit {
+
+  /*ng-template if dishSubject is empty, then show hidden div which is activated via a function
+    where the message is set to either dishPopup, or wikiPopup if that's clear instead.
+        the entire thing is obvi inside a setTimeout*/
+
   private allergens = [
   	{id: 0, value: 'eggs', type: 'eggs', sensitivity: false},
   	{id: 1, value: 'fish', type: 'fish', sensitivity: false},
@@ -67,13 +76,12 @@ export class MenuComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private menuService: MenuService,
   	          private router: Router, private detect: ChangeDetectorRef, 
-              private wiki: PopupWikiService) { 
+              private wiki: PopupWikiService, private dishPopup: PopupPicsComponent) { 
   }
 
   ngOnInit() {
     if(this.menuService.theMenu().length) {
-      let flatten = this.menuService.theMenu();
-      this.dishes = flatten[0];
+      this.dishes = this.menuService.theMenu();
       for (var i = 0; i < this.allergens.length; i++) {
         if (this.menuService.allergies.find((thing: any) => thing ==  this.allergens[i].type )) {   
           this.allergens[i].sensitivity = true;
@@ -119,6 +127,11 @@ export class MenuComponent implements OnInit {
     allergy.sensitivity = false;
   }
 
+  viewDishPic(dish) {
+    this.menuService.dishToView(dish);
+    this.router.navigate([{ outlets: { dishPopup: ['viewDish'] } }]);
+  }
+
   lookUp(term) {
     if(term.length !< 15) {
       this.wiki.searchTerm(term);
@@ -127,4 +140,3 @@ export class MenuComponent implements OnInit {
   }
 
 }      
-

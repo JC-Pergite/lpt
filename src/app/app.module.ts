@@ -12,9 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainModule } from './main.module';
 import { MenuDataService } from './menu-data.service';
 import { PopupWikiComponent } from './wiki/popup-wiki.component';
+import { PopupPicsComponent } from './menu/popup-pics.component';
 
 @NgModule({
-  declarations: [ AppComponent, PopupWikiComponent ],
+  declarations: [ AppComponent, PopupWikiComponent, PopupPicsComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

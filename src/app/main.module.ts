@@ -9,7 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MenuService } from './menu/menu.service';
 import { ClickifyPipe } from './menu/clickify.pipe';
 import { PopupWikiService } from './wiki/popup-wiki.service';
-
+import { PopupPicsComponent } from './menu/popup-pics.component';
 
 @NgModule ({
 	imports: [ SharedModule, mainRouting ], 
@@ -20,6 +20,6 @@ import { PopupWikiService } from './wiki/popup-wiki.service';
 					ContactComponent,
 					ClickifyPipe
 				  ],
-	providers: [ MenuService, PopupWikiService ]
+	providers: [ MenuService, PopupWikiService, PopupPicsComponent ]
 })
 export class MainModule { }

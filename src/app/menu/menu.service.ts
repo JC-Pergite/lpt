@@ -13,6 +13,9 @@ export class MenuService {
   public menuChanges = this.menuSubject.asObservable().distinctUntilChanged();
   private userMenu: Menu[] = [];
 
+  	private dishSubject: BehaviorSubject<any> = new BehaviorSubject<Menu[]>([]);
+  public selectedDish = this.dishSubject.asObservable().distinctUntilChanged();
+
 	public allergies: Allergy[] = [];
 	private allergySubject: BehaviorSubject<any> = new BehaviorSubject<Allergy[]>([]);
   public allergicReaction = this.allergySubject.asObservable().distinctUntilChanged();
@@ -41,6 +44,15 @@ export class MenuService {
 		let originalItem = this.menuSubject.value.indexOf(this.userMenu[0][allergicItem.id]);
 		this.userMenu.splice(originalItem, -1);
     this.menuSubject.next(this.userMenu);
+	}
+
+	dishToView(dish) {
+		console.log(dish);
+	    this.dishSubject.next(dish);
+	} 
+
+	getDishPic() {
+	    return this.dishSubject.value;
 	}
 
   setAllergies(allergy) {
