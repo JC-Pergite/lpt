@@ -9,7 +9,7 @@ export class Menu {
 		public allergens?: Allergy[],
 		public allergic?: {
 			susceptibleTo: number,
-			susceptible: string
+			susceptible: boolean
 		}
 	){}
 }

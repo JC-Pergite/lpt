@@ -2,8 +2,21 @@ div.allergies {
     margin-bottom: -1em;
 }
 
+select[multiple], select[size] {
+    width: 15em;
+}
+
 .mainAllergies {
     margin-left: .7em;
+    visibility: collapse;
+}
+
+select#allergyOptions.form-control:focus {
+    color: royalblue !important;
+}
+
+select#removableAllergy.form-control {
+    color: indianred !important;
 }
 
 ul {
