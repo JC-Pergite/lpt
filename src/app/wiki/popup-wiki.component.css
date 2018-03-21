@@ -1,21 +1,38 @@
 p {
     font-size: 0.9em;
     text-align: justify;
-    color: orange;
+    color: #94a2ef;
 }
 
 div.modal.wiki {
-    width: 40%;
-    height: 100%;
+    position: absolute !important;
+    width: 32.3em;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
-    left: 59%;
-    top: 3em;
+    left: 50em;
+    top: -43.8em;
 }
 
 div.modal-content.wiki {
-	background: rgba(39, 43, 48, 0.87) !important;
+    background-color: rgba(239, 231, 218, 0.58);
+}
+
+h4.wikiTitle {
+    font-size: 1em;
+    color: #a4a4ff;
+    border-bottom: 1px solid rgb(121, 125, 158);
+    padding-bottom: .5em;
+}
+
+div.modal-body.header {
+    text-align: center;
+    margin-bottom: 2em;
 }
 
 div.modal-body {
@@ -28,7 +45,7 @@ ul.wiki{
 
 li {
 	font-size: 1em;
-    color: #c5c3c1;
+    color: #2b2f38;
 	list-style-type: circle;
     overflow-wrap: break-word;
 }
@@ -42,10 +59,11 @@ li::first-letter {
 }    
 
 button.btn.btn-outline-danger {
-    position: absolute;
+    position: relative;
 }
 
 div.modal-footer {
-    border-top: 1px solid #aba8a8;
-    margin-top: 1em;
+    border-top: 1px solid #3c3d46;
+    background-color: rgba(39, 43, 48, 0.7);
+    margin-top: 2em;
 }

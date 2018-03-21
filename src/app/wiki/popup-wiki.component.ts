@@ -10,6 +10,9 @@ import { PopupWikiService } from './popup-wiki.service';
  <div class="modal wiki">
     <div class="modal-dialog" role="document">
       <div class="modal-content wiki">
+          <div class="modal-body header">
+            <h4 class="wikiTitle">Wikipedia Results</h4>
+          </div>  
           <div class="modal-body" *ngFor="let ingredient of dish">
             <ul>
               <li (click)="investigate(ingredient)">{{ingredient}}</li>

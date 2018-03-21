@@ -18,7 +18,7 @@ import { PopupPicsComponent } from './popup-pics.component';
     <h2>MENU</h2>
     <div class="theMenus">
     <div class="clientAllergies">
-      <h3 (click)="allergyChecker = true" [style.visibility]="allergyChecker ? 'hidden' : 'initial'">Allergens</h3>
+      <h4 (click)="allergyChecker = true" [style.visibility]="allergyChecker ? 'hidden' : 'initial'">Allergens</h4>
       <fieldset>
         <div class="form-group" [ngClass]="{'mainAllergies': !allergyChecker}" #allergy>
           <label for="exampleSelect2" (click)="allergyChecker = false">[ Done ]</label>
@@ -44,9 +44,9 @@ import { PopupPicsComponent } from './popup-pics.component';
     	<div *ngFor="let dish of dishes">
     		<ul>
     			<li>
-            <h4 [ngClass]="{'strikeThru': dish?.allergic[0]?.susceptible}" (click)="viewDishPic(dish)">
+            <h3 [ngClass]="{'strikeThru': dish?.allergic[0]?.susceptible}" (click)="viewDishPic(dish)">
             {{dish?.name}}
-            </h4>
+            </h3>
             <span id="allergyWarning" *ngIf="dish?.allergic[0]?.susceptible">
                 {{warning}} {{dish?.allergic[0]?.susceptibleTo}}
             </span>

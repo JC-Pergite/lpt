@@ -1,3 +1,9 @@
+span#wiki-able {
+    color: blue !important;
+    text-decoration: line-through;
+    text-transform: uppercase;
+}
+
 .mainContainer {
     background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-dinner.jpg);
     background-attachment: fixed;
@@ -39,7 +45,8 @@ select#removableAllergy.form-control {
     margin-left: 15em;
     margin-top: -6.11em;
     color: #463f3f;
-    /*color: #330b0b;*/
+    /*background-color: rgba(230, 217, 201, 0.5);*/
+    background-color: rgba(220, 207, 187, 0.37);
 }
 
 option {
@@ -58,7 +65,7 @@ select#allergyOptions.form-control>option.instruction:hover {
 }
 
 option.removeInstruction {
-    color: #fbf2e8;
+    color: #fbd9a6;
 }
 
 select#removableAllergy.form-control>option.removeInstruction:hover {
@@ -88,16 +95,18 @@ label, li.notAllergic::first-letter {
     text-transform: capitalize;
 }  
 
-h4 {
+h3 {
     font-size: 14px;
 	margin-top: .8em;
+    cursor: pointer;
 }	
 
-h3 {
+h4 {
     font-size: .8em;
     margin-left: 28.5%;
     top: 10.8em;
     position: relative;
+    cursor: pointer;
 }
 
 h2 {
@@ -126,7 +135,9 @@ span#allergyWarning {
 
 p.dishDetails {
     margin-bottom: 1.7em !important;
+    cursor: pointer;
 }
+
 .clientAllergies {
     left: 23%;
     position: relative;
