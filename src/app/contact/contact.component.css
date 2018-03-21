@@ -1,9 +1,118 @@
 div#tickTok.form-group {
 	position: relative;
-	left: 10em;
+	left: 85%;
+    top: .5em;
+    opacity: .70;
+}
+
+.whichMeal {
+    border-radius: 3px;
+    color: #efe4ce;
+    position: relative;
+    text-indent: -.7em;
+    width: 13em;
+    text-align: left;
+    left: 40%;
+    line-height: 1.8em;
+    top: 2em;
+}
+
+span.lunchDinner {
+    box-shadow: inset 0px 0px 6px 1px #6f5f5f;
+    border-radius: 4px;
+    padding-top: 2px;
+    padding-left: 6px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    cursor: pointer;
 }
 
 p.meal {
     position: relative;
     left: 2.73%;
+}
+
+.reservation {
+    background-image: url(https://static.pexels.com/photos/157054/pexels-photo-157054.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 583px;
+    height: 100%;
+    margin-top: -1.6em;
+}
+
+input {
+	border-color: #818ae0 !important;
+    background-color: transparent !important;
+    text-align: center;
+}
+
+input:focus {
+	color: floralwhite;
+}
+
+input.ng-invalid:not(:focus) {
+	font-style: italic;
+}
+
+input.form-control.is-valid.ng-valid:hover {
+	border: 1px solid #818ae0 !important;
+}
+
+input.form-control.is-valid.ng-valid {
+	color: #636adc;
+	border: none;
+	box-shadow: none;
+}
+
+label.col-lg-2.control-label {
+    display: unset;
+    margin-left: 1em;
+    border-bottom: 1px solid;
+    padding-bottom: .1em;
+    color: #bdb6b6;
+    font-weight: 200;
+}
+
+.reserveForm {
+	background-color: rgba(33, 28, 25, 0.68);
+    border-radius: 6px;
+    width: 80%;
+    top: 3.2em;
+    height: 35em;
+    position: relative;
+    left: 9.5%;
+}
+
+div.col-lg-10.name {
+	margin-top: 1em;
+}
+
+.nameAndParty{
+	width: 15em;
+	position: relative;
+	left: 12%;
+    top: 10em;
+}
+
+#calendarChoice {
+    position: relative;
+    width: 14em;
+    left: 64%;
+    top: -8em;
+    opacity: .58;
+}
+
+button.btn.btn-outline-success {
+	margin-left: 21%;
+}
+
+button.btn.btn-outline-success:hover {
+	color: #fff;
+}
+
+.btn[disabled] {
+	text-decoration: line-through;
+	opacity: .35 !important;
+    color: springgreen;
 }

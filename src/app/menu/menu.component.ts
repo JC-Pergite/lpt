@@ -14,32 +14,17 @@ import { PopupPicsComponent } from './popup-pics.component';
   selector: 'lpt-menu',
   // templateUrl: './menu.component.html',
   template: `
-  <h3>MENU</h3>
-  	<div *ngFor="let dish of dishes">
-  		<ul>
-  			<li>
-          <h4 [ngClass]="{'strikeThru': dish?.allergic[0]?.susceptible}" (click)="viewDishPic(dish)">
-          {{dish?.name}}
-          </h4>
-          <span id="allergyWarning" *ngIf="dish?.allergic[0]?.susceptible">
-              {{warning}} {{dish?.allergic[0]?.susceptibleTo}}
-          </span>
-  				<p class="dishDetails" [innerHTML]="dish?.description | clickify"
-            (click)="lookUp($event.toElement.innerHTML)">
-          </p>
-  			</li>
-  		</ul>
-      <router-outlet name="dishPopup"></router-outlet>
-      <router-outlet name="wikiPopup"></router-outlet>
-  	</div>
-  	<div>
-      <h3 (click)="allergyChecker = true">Allergens</h3>
+  <div class="mainContainer">
+    <h2>MENU</h2>
+    <div class="theMenus">
+    <div class="clientAllergies">
+      <h3 (click)="allergyChecker = true" [style.visibility]="allergyChecker ? 'hidden' : 'initial'">Allergens</h3>
       <fieldset>
         <div class="form-group" [ngClass]="{'mainAllergies': !allergyChecker}" #allergy>
           <label for="exampleSelect2" (click)="allergyChecker = false">[ Done ]</label>
           <select multiple class="form-control" id="allergyOptions" [(ngModel)]="allergy.value" 
           (ngModelChange)="allergyCheck(allergy.value[0]); allergy.value=''">
-            <option value="" disabled>Select All Applicable Allergies: </option>
+            <option class="instruction" value="" disabled>Select All Applicable Allergies: </option>
             <option *ngFor="let allergy of allergens" [ngValue]="allergy">
               {{allergy.value}}
             </option>
@@ -47,7 +32,7 @@ import { PopupPicsComponent } from './popup-pics.component';
           <div *ngIf="this.customerAllergies.length">
             <select multiple class="form-control" id="removableAllergy" [(ngModel)]="allergy.value" 
               (ngModelChange)="removeAllergy(allergy.value[0]); allergy.value=''">
-              <option value="" disabled>Click to Remove an Allergy: </option>
+              <option class="removeInstruction" value="" disabled>Click to Remove an Allergy: </option>
               <option *ngFor="let allergy of customerAllergies" [ngValue]="allergy">
                 {{allergy.value}}
               </option>
@@ -55,16 +40,32 @@ import { PopupPicsComponent } from './popup-pics.component';
           </div>
         </div>
       </fieldset>
-  	</div>  
+    </div>  
+    	<div *ngFor="let dish of dishes">
+    		<ul>
+    			<li>
+            <h4 [ngClass]="{'strikeThru': dish?.allergic[0]?.susceptible}" (click)="viewDishPic(dish)">
+            {{dish?.name}}
+            </h4>
+            <span id="allergyWarning" *ngIf="dish?.allergic[0]?.susceptible">
+                {{warning}} {{dish?.allergic[0]?.susceptibleTo}}
+            </span>
+    				<p class="dishDetails" [innerHTML]="dish?.description | clickify"
+              (click)="lookUp($event.toElement.innerHTML)">
+            </p>
+    			</li>
+    		</ul>
+        <router-outlet name="dishPopup"></router-outlet>
+        <router-outlet name="wikiPopup"></router-outlet>
+      </div>
+  	</div>
+  </div>
 	`,
   styleUrls: ['./menu.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush  
 })
 export class MenuComponent implements OnInit {
 
-  /*ng-template if dishSubject is empty, then show hidden div which is activated via a function
-    where the message is set to either dishPopup, or wikiPopup if that's clear instead.
-        the entire thing is obvi inside a setTimeout*/
   allergyChecker: boolean = false;
   customerAllergies = this.menuService.allergies;
   private allergens = [
@@ -88,7 +89,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     if(this.menuService.theMenu().length) {
-      this.dishes = this.menuService.theMenu()[0];
+      this.dishes = this.menuService.theMenu();
       for (var i = 0; i < this.allergens.length; i++) {
         if (this.menuService.allergies.find((thing: any) => thing ==  this.allergens[i].type )) {   
           this.allergens[i].sensitivity = true;

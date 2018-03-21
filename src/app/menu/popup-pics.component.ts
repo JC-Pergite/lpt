@@ -8,11 +8,11 @@ import { MenuService } from './menu.service';
   <div class="modal dishPic">
     <div class="modal-dialog" role="document">
       <div class="modal-content dishPic">
-        <div class="modal-body">
-          <h2 class="popupTitle">{{dish[0].name}}</h2>
+        <div class="modal-body" *ngFor="let ingredient of dish">
           <img src="{{dish[0].photoUrl}}" alt="Responsive image">
         </div>
         <div class="modal-footer">
+          <h5 class="popupTitle">{{dish[0].name}}</h5>
           <button type="button" class="btn btn-outline-danger dishPic" data-dismiss="modal"
           (click)="closePopup()">
             Close
@@ -26,7 +26,6 @@ import { MenuService } from './menu.service';
 })
 export class PopupPicsComponent { 
   @HostBinding('style.display')   display = 'block';
-  @HostBinding('style.position')  position = 'absolute';
   @Input() dish: Menu[];
 
   constructor(private router: Router, private menuService: MenuService) { 

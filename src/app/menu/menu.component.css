@@ -1,3 +1,21 @@
+.mainContainer {
+    background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-dinner.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 583px;
+    height: 100%;
+    margin-top: -1.6em;
+}
+
+.theMenus {
+    background: rgba(39, 43, 48, 0.65);
+    border-radius: 3px;
+    color: seashell;
+    width: 50.6%;
+    position: relative;
+    top: -3em;
+}
+
 div.allergies {
     margin-bottom: -1em;
 }
@@ -11,12 +29,51 @@ select[multiple], select[size] {
     visibility: collapse;
 }
 
-select#allergyOptions.form-control:focus {
-    color: royalblue !important;
+select#allergyOptions.form-control {
+    background-color: transparent;
+    color: rgba(243, 242, 242, 0.87); 
 }
 
 select#removableAllergy.form-control {
-    color: indianred !important;
+    position: relative;
+    margin-left: 15em;
+    margin-top: -6.11em;
+    color: #463f3f;
+    /*color: #330b0b;*/
+}
+
+option {
+    text-transform: capitalize;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+option.instruction {
+    color: #6c6ce2;
+}
+
+select#allergyOptions.form-control>option.instruction:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+option.removeInstruction {
+    color: #fbf2e8;
+}
+
+select#removableAllergy.form-control>option.removeInstruction:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+select#allergyOptions.form-control>option:hover {
+    background-color: rgba(41, 32, 26, 0.55);
+    border-radius: 3px;
+}
+
+select#removableAllergy.form-control>option:hover {
+    background-color: rgba(245, 236, 229, 0.7);
+    border-radius: 3px;
 }
 
 ul {
@@ -24,7 +81,7 @@ ul {
 }
 
 label {
-    margin-left: 1.7%;
+    margin-left: 32%;
 }
 
 label, li.notAllergic::first-letter {
@@ -37,8 +94,18 @@ h4 {
 }	
 
 h3 {
-    font-size: 23px;
-    margin-left: 2.8%;
+    font-size: .8em;
+    margin-left: 28.5%;
+    top: 10.8em;
+    position: relative;
+}
+
+h2 {
+    font-size: 1.5em;
+    position: relative;
+    color: #d4d6dc;
+    top: 5.5em;
+    left: 3%;
 }
 
 .strikeThru {
@@ -48,16 +115,21 @@ h3 {
 
 span#allergyWarning {
 	position: relative;
-    left: 22%;
+    left: 29%;
     top: -.6em;
     font-size: 1.1em;
     font-weight: 400;
     font-variant: all-small-caps;
     color: indianred;
+    text-shadow: 1px 0px 6px brown;
 }
 
 p.dishDetails {
     margin-bottom: 1.7em !important;
+}
+.clientAllergies {
+    left: 23%;
+    position: relative;
 }
 
 .btn.btn-outline-danger {

@@ -32,6 +32,9 @@ export class ContactComponent implements OnInit {
     this.allergyList();
 	}
 
+  get name() { return this.reserve.get('name'); }
+  get party() { return this.reserve.get('party'); }
+
   allergyList() {
     this.allergies = this.menuService.getAllergies();
   }

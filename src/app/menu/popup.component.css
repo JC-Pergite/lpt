@@ -1,21 +1,25 @@
 div.modal {
     display: inline-block !important;
-    width: 500px;
-    height: 560px;
-    /*  top: 31pt;
-    left: 286pt;
-*/
+    left: 47%;
+    top: 32%;
+    height: 80%;
+    position: fixed;
 }
 
 div.modal-content {
-    background: rgba(39, 43, 48, 0.87) !important;
-    border-radius: 14px !important;
+    width: 70%;
+    margin-left: -1%;
+    background-color: rgba(14, 14, 14, 0.78);
+    border-left: 1px dotted papayawhip; 
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 button.btn.btn-outline-danger {
-    font-weight: normal;
+    font-weight: 300;
 	font-size: 1.1em;
-    background-color: rgba(39, 43, 48, 0.70) !important;
     border-radius: 5px;
 }
 
@@ -25,13 +29,26 @@ button.btn.btn-outline-danger:hover {
 }
 
 img {
-    width: 420px;
-    height: 360px;
-    margin-left: 1.7em;
-    border-radius: 7px;
-    box-shadow: -3px 2px 8px 0 rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(136, 133, 113, 0.95);
+    width: 310px;
+    height: 280px;
+    margin-left: .2em;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 6px !important;
+    border-top-right-radius: 6px;
+    box-shadow: -2px 1px 13px 1px #867c70;
 }
 
+.modal-footer {
+    height: 3em;
+    border-top: 1px dotted antiquewhite;
+}
+
+h5.popupTitle {
+    margin-right: 7em;
+    color: #9a4711;
+}
 
 /*
 @media all and (max-width: 38.5em) {

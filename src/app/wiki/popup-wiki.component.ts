@@ -7,24 +7,25 @@ import { PopupWikiService } from './popup-wiki.service';
 @Component({
   template: 
 ` 
-  <div class="modal wiki">
+ <div class="modal wiki">
     <div class="modal-dialog" role="document">
-      <div class="modal-content wiki" *ngFor="let ingredient of dish">
-        <ul>
-          <li (click)="investigate(ingredient)">{{ingredient}}</li>
-        </ul>  
-      </div>  
-      <div class="modal-footer">
-        <p>{{description}}</p>
+      <div class="modal-content wiki">
+          <div class="modal-body" *ngFor="let ingredient of dish">
+            <ul>
+              <li (click)="investigate(ingredient)">{{ingredient}}</li>
+            </ul>  
+          </div>  
+          <div class="modal-footer">
+            <p>{{description}}</p>
+          </div>
+          <button type="button" class="btn btn-outline-danger" 
+            data-dismiss="modal" (click)="closePopup()">
+              Cancel
+          </button>
       </div>
-    </div>
-    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"
-      (click)="closePopup()">
-      Cancel
-    </button>
   </div>   
   `,
-  styleUrls: ['./popup.component.css']
+  styleUrls: ['./popup-wiki.component.css']
 })
 export class PopupWikiComponent implements OnInit {
   @HostBinding('style.display')   display = 'block';

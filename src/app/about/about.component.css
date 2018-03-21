@@ -1,0 +1,9 @@
+.sideInfo {
+    background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-lunch.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 583px;
+    height: 100%;
+    color: gainsboro;
+    margin-top: -1.6em;
+}
