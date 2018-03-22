@@ -1,9 +1,13 @@
 <div class="reservation">
   <div class="reserveForm">
     <div class="whichMeal">
-      <p class="beOurGuest">Shall you be joining us for 
-        <span class="lunchDinner" (click)="dinner = !dinner">{{this.meal[0]}} (12 - 16pm)</span> or 
-        <span class="lunchDinner" (click)="dinner = !dinner">{{this.meal[1]}} (19 - 23pm)</span>  ?
+      <p class="beOurGuest">Which shall we serve: 
+        <span class="lunchDinner" (click)="dinner = !dinner" [ngClass]="{ 'opaque' : dinner }">
+          {{this.meal[0]}} (12 - 16pm) 
+        </span> 
+        <span class="dinnerLunch" (click)="dinner = !dinner" [ngClass]="{ 'opaque' : dinner }">
+          {{this.meal[1]}} (19 - 23pm)
+        </span>
       </p>
     </div>  
     <form class="form-horizontal" novalidate (ngSubmit)="onSubmit(reserve)" [formGroup]="reserve">

@@ -1,3 +1,7 @@
+.selected {
+    background-color: rgba(39, 43, 48, 0.68);
+}
+
 p {
     font-size: 0.9em;
     text-align: justify;
@@ -5,18 +9,18 @@ p {
 }
 
 div.modal.wiki {
-    position: absolute !important;
-    width: 32.3em;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    left: 50em;
-    top: -43.8em;
+    position: relative !important;
+    height: 40em;
+    display: inline-flex;
+    margin-top: 6em;
+    right: 0;
+    bottom: 0;
+    left: 57%;
+    top: -49.5em;
+}
+
+div.modal-dialog {
+    position: relative;
 }
 
 div.modal-content.wiki {
@@ -60,10 +64,12 @@ li::first-letter {
 
 button.btn.btn-outline-danger {
     position: relative;
+    border-radius: 3px;
 }
 
 div.modal-footer {
     border-top: 1px solid #3c3d46;
     background-color: rgba(39, 43, 48, 0.7);
     margin-top: 2em;
+    border-radius: 2px;
 }

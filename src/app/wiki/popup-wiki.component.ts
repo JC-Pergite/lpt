@@ -13,9 +13,12 @@ import { PopupWikiService } from './popup-wiki.service';
           <div class="modal-body header">
             <h4 class="wikiTitle">Wikipedia Results</h4>
           </div>  
-          <div class="modal-body" *ngFor="let ingredient of dish">
+          <div class="modal-body" *ngFor="let ingredient of dish; let i = index">
             <ul>
-              <li (click)="investigate(ingredient)">{{ingredient}}</li>
+              <li (click)="investigate(ingredient)" 
+              [ngClass]="{ 'selected': i === wikindex }"> 
+                {{ingredient}}
+              </li>
             </ul>  
           </div>  
           <div class="modal-footer">
@@ -31,12 +34,13 @@ import { PopupWikiService } from './popup-wiki.service';
   styleUrls: ['./popup-wiki.component.css']
 })
 export class PopupWikiComponent implements OnInit {
-  @HostBinding('style.display')   display = 'block';
-  @HostBinding('style.position')  position = 'absolute';
+  @HostBinding('style.display')   display = 'flex';
+  @HostBinding('style.position')  position = 'static';
 
   dish: string[];
   description: Array<string>;
   term: string;
+  wikindex: number;
 
   constructor (private router: Router, private popupWikiService: PopupWikiService) {
     this.term = this.popupWikiService.getTerm();
@@ -44,7 +48,7 @@ export class PopupWikiComponent implements OnInit {
 
   ngOnInit() {
     this.popupWikiService.search(this.term).subscribe(results => 
-      { this.dish = results },
+      { this.dish = results; },
       error => { 'Not Found' },
       () => { if(!this.dish.length) {this.notFound()} }
     );
@@ -55,9 +59,13 @@ export class PopupWikiComponent implements OnInit {
   }
 
   investigate(ingredient) {
-    this.popupWikiService.define(ingredient).subscribe(termInfo => {
-      this.description = termInfo;
-    });
+    this.wikindex = this.dish.indexOf(ingredient);
+    this.popupWikiService.define(ingredient)
+              .subscribe(termInfo => 
+                         {  this.description = termInfo; },
+                error => { 'Not Found' },
+                   () => { if(!this.description.length) {this.notFound()} }
+              );
   }
 
   closePopup() {

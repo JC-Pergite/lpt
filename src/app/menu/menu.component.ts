@@ -56,8 +56,8 @@ import { PopupPicsComponent } from './popup-pics.component';
     			</li>
     		</ul>
         <router-outlet name="dishPopup"></router-outlet>
-        <router-outlet name="wikiPopup"></router-outlet>
       </div>
+        <router-outlet name="wikiPopup"></router-outlet>
   	</div>
   </div>
 	`,

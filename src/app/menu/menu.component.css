@@ -1,9 +1,3 @@
-span#wiki-able {
-    color: blue !important;
-    text-decoration: line-through;
-    text-transform: uppercase;
-}
-
 .mainContainer {
     background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-dinner.jpg);
     background-attachment: fixed;
@@ -26,6 +20,10 @@ div.allergies {
     margin-bottom: -1em;
 }
 
+label {
+    cursor: pointer;
+}
+
 select[multiple], select[size] {
     width: 15em;
 }
@@ -45,7 +43,6 @@ select#removableAllergy.form-control {
     margin-left: 15em;
     margin-top: -6.11em;
     color: #463f3f;
-    /*background-color: rgba(230, 217, 201, 0.5);*/
     background-color: rgba(220, 207, 187, 0.37);
 }
 

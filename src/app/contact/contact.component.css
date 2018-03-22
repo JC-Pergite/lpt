@@ -1,30 +1,65 @@
 div#tickTok.form-group {
 	position: relative;
 	left: 85%;
-    top: .5em;
+    top: -1.3em;
     opacity: .70;
 }
 
 .whichMeal {
     border-radius: 3px;
-    color: #efe4ce;
+    color: #bdb9b9;
     position: relative;
-    text-indent: -.7em;
+    text-indent: -.2em;
     width: 13em;
     text-align: left;
     left: 40%;
-    line-height: 1.8em;
     top: 2em;
+    font-weight: 200;
+}
+
+span:not(.dinnerLunch) {
+    line-height: 3.5em;
 }
 
 span.lunchDinner {
-    box-shadow: inset 0px 0px 6px 1px #6f5f5f;
+    font-weight: 100;
+    color: #efe4ce;
+    box-shadow: inset 0px 0px 6px 3px #6f5f5f;
     border-radius: 4px;
-    padding-top: 2px;
-    padding-left: 6px;
-    padding-right: 5px;
-    padding-bottom: 2px;
+    padding-top: 5px;
+    padding-left: 9px;
+    padding-right: 14px;
+    padding-bottom: 6px;
     cursor: pointer;
+}
+
+span.lunchDinner:hover {
+    padding-top: 10px;
+    padding-left: 12px;
+    padding-right: 17px;
+    padding-bottom: 9px;
+}
+
+span.dinnerLunch {
+    color: #6f5f5f;
+    box-shadow: inset 0px 0px 8px 1px #efe4ce;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-left: 9px;
+    padding-right: 8px;
+    padding-bottom: 6px;
+    cursor: pointer;
+}
+
+span.opaque:not(:hover) {
+    opacity: .30;
+}
+
+span.dinnerLunch:hover {
+    padding-top: 10px;
+    padding-left: 12px;
+    padding-right: 10.5px;
+    padding-bottom: 9px;
 }
 
 p.meal {
@@ -78,8 +113,8 @@ label.col-lg-2.control-label {
 	background-color: rgba(33, 28, 25, 0.68);
     border-radius: 6px;
     width: 80%;
-    top: 3.2em;
-    height: 35em;
+    top: 2.5em;
+    height: 37em;
     position: relative;
     left: 9.5%;
 }
@@ -92,19 +127,19 @@ div.col-lg-10.name {
 	width: 15em;
 	position: relative;
 	left: 12%;
-    top: 10em;
+    top: 8.5em;
 }
 
 #calendarChoice {
     position: relative;
     width: 14em;
     left: 64%;
-    top: -8em;
+    top: -10em;
     opacity: .58;
 }
 
 button.btn.btn-outline-success {
-	margin-left: 21%;
+	margin-left: 20%;
 }
 
 button.btn.btn-outline-success:hover {

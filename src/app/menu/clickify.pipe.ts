@@ -18,7 +18,6 @@ export class ClickifyPipe implements PipeTransform {
       for (let t of text.split(" ")) {
         if (t !== 'and' && t !== 'with')
         stylizedText += `<span>${t}</span> `;
-      
         else stylizedText += t + " ";
       }    
       return stylizedText;
