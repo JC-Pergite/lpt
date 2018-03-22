@@ -30,9 +30,7 @@
           </label>
           <div class="col-lg-10 name">
             <input type="text" class="form-control is-valid" id="inputValid"
-                 placeholder="Reservation Name(s)" 
-                 formControlName="name"
-            /> 
+                 placeholder="Reservation Name(s)" formControlName="name" />
           </div>
         </div>  
       </div>  
@@ -45,17 +43,19 @@
           <ng-template #dinnner>
             <p class="meal"> {{this.meal[1]}}</p>
           </ng-template>  
-          <div *ngIf="ctrl.valid" class="small form-text text-success" id="validate">Great choice</div>
+          <div *ngIf="ctrl.valid && ctrl.dirty" class="small form-text text-success" id="validate">
+            Excellent choice
+          </div>
           <div class="small form-text text-danger" id="validate" *ngIf="!ctrl.valid">
-            <div *ngIf="ctrl.errors['required']">Select some time during lunchtime</div>
-            <div *ngIf="ctrl.errors['tooLate']">Oh no, it's way too late</div>
-            <div *ngIf="ctrl.errors['tooEarly']">It's a bit too early</div>
+            <div *ngIf="ctrl.errors['required']">Kindly select a time within our lunch hours</div>
+            <div id="tooLate" *ngIf="ctrl.errors['tooLate']">Our apologies; that's too late</div>
+            <div id="tooEarly" *ngIf="ctrl.errors['tooEarly']">Sadly, that's a bit too early</div>
           </div>
         </div>
         <div class="form-group" id="calendarChoice">
           <div class="col-lg-10 col-lg-offset-2">
             <my-date-picker name="mydate" [options]="myDatePickerOptions"
-              formControlName="myDate"></my-date-picker>
+              formControlName="myDate" placeholder="Click Calendar"></my-date-picker>
           </div>
         </div>
         <div class="form-group">

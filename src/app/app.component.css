@@ -12,3 +12,7 @@ a.mainLinks {
 	letter-spacing: .03em;
 	font-size: 1.3em;
 }
+
+a.mainLinks:hover, a.mainLinks:focus {
+	background-color: rgba(228, 228, 234, 0.3);
+}

@@ -1,7 +1,7 @@
 div#tickTok.form-group {
-	position: relative;
+	position: absolute;
 	left: 85%;
-    top: -1.3em;
+    top: 13.8em !important;
     opacity: .70;
 }
 
@@ -64,7 +64,8 @@ span.dinnerLunch:hover {
 
 p.meal {
     position: relative;
-    left: 2.73%;
+    left: 2.2em;
+    color: antiquewhite;
 }
 
 .reservation {
@@ -133,13 +134,16 @@ div.col-lg-10.name {
 #calendarChoice {
     position: relative;
     width: 14em;
-    left: 64%;
-    top: -10em;
+    left: 65%;
+    top: .3em;
     opacity: .58;
+    cursor: pointer;
 }
 
 button.btn.btn-outline-success {
 	margin-left: 20%;
+    position: relative;
+    top: 11em;
 }
 
 button.btn.btn-outline-success:hover {
@@ -150,4 +154,12 @@ button.btn.btn-outline-success:hover {
 	text-decoration: line-through;
 	opacity: .35 !important;
     color: springgreen;
+}
+
+div#tooEarly {
+    margin-left: -2em
+}
+
+div#tooLate {
+    margin-left: -3em
 }

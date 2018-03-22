@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormArray, FormControl, 
 		 FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IMyDpOptions, IMyDateModel } from 'angular4-datepicker/src/my-date-picker/interfaces';
@@ -8,26 +8,28 @@ import { MenuService } from '../menu/menu.service';
 @Component({
   selector: 'lpt-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush    
 })
 export class ContactComponent implements OnInit {
 
 	reserve: FormGroup;
   public time = { hour: 12, minute: 0 };
   public myDatePickerOptions: IMyDpOptions = {
-            dateFormat: 'dd.mm.yyyy',
+            dateFormat: 'mm/dd/yyyy',
   }; 
   public dinner: boolean = false;
   public meal: Array<string> = ['Lunch', 'Dinner'];
   allergies: Allergy[];
 
-  constructor(private fb: FormBuilder, private menuService: MenuService) { }
+  constructor(private fb: FormBuilder, private menuService: MenuService,
+              private detect: ChangeDetectorRef) { }
 
   ngOnInit() {
    	this.reserve = this.fb.group({
      	name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(9)]],
      	party: ['', [Validators.required] ],
-      myDate: [null, Validators.required]
+      myDate: [null, Validators.required],
     });
     this.allergyList();
 	}
@@ -37,6 +39,7 @@ export class ContactComponent implements OnInit {
 
   allergyList() {
     this.allergies = this.menuService.getAllergies();
+    this.detect.markForCheck();
   }
 
   onSubmit({ value, valid }: { value: string, valid: boolean }) {
@@ -52,19 +55,19 @@ export class ContactComponent implements OnInit {
         month: date.getMonth() + 1,
         day: date.getDate()}
     }});
+    this.detect.markForCheck();
   }
  
   clearDate(): void {
     this.reserve.patchValue({myDate: null});
+    this.detect.markForCheck();
   }
-
 
   ctrl = new FormControl('', (control: FormControl) => {
     const value = control.value;
     if (!value) {
       return null;
     }
-
     if(!this.dinner) {
       if (value.hour < 12) {
         return {tooEarly: true};
