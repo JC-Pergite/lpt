@@ -1,5 +1,6 @@
 .selected {
     background-color: rgba(39, 43, 48, 0.68);
+    color: #fff998;
 }
 
 p {
@@ -50,10 +51,14 @@ li {
     color: #2b2f38;
 	list-style-type: circle;
     overflow-wrap: break-word;
+    border-radius: 4px;
+    padding-left: .5em;
 }
 
 li:hover {
     cursor: pointer;
+    background-color: rgba(245, 245, 245, 0.89);
+    color: #6b6868;
 } 
 
 li::first-letter {

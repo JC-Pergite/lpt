@@ -3,15 +3,15 @@
     <ng-template #validForm>
       <div id="reserveFormValid" class="reserveForm">
         <div class="reserveInfo">
-          <div *ngIf="allergies">
+          <div *ngIf="confirmation?.allergies">
             <p class="guestDetails allergicTo">chef Furansu will certainly make note of staying away from 
               mediocracy, 
-             <span id="allergyType" *ngFor="let allergy of allergies"> {{allergy?.type}}, 
+             <span id="allergyType" *ngFor="let allergy of confirmation?.allergies"> {{allergy?.type}}, 
              </span>
-              as per expected. After all, you need only savor the moment. 
+              as per expected. You need only savor the moment; leave the rest to us. 
             </p> 
           </div>
-          <p class="guestDetails">{{confirmation['name']}}, rest assured we'll do our upmost to offer you and your party of  {{confirmation['party']}},  an unrivaled dinning experience on {{confirmation['date']}} at {{confirmation.time}}. <br>  -  Arigato degozaimasu
+          <p class="guestDetails">{{confirmation['name']}}, rest assured we'll do our upmost to offer you, and your party of  {{confirmation['party']}},  an unrivaled dinning experience on {{confirmation['date']}} at {{confirmation.time}}. <br>  -  Arigato degozaimasu
           </p>
         </div>
       </div>

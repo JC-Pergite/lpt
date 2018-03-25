@@ -36,7 +36,7 @@ select[multiple], select[size] {
 
 select#allergyOptions.form-control {
     background-color: transparent;
-    color: rgba(243, 242, 242, 0.87); 
+    color: rgba(243, 242, 242, 0.85); 
 }
 
 select#removableAllergy.form-control {
@@ -54,7 +54,7 @@ option {
 }
 
 option.instruction {
-    color: #6c6ce2;
+    color: #6c6ce2 !important;
 }
 
 select#allergyOptions.form-control>option.instruction:hover {
@@ -63,7 +63,7 @@ select#allergyOptions.form-control>option.instruction:hover {
 }
 
 option.removeInstruction {
-    color: #fbd9a6;
+    color: #fbd9a6 !important;
 }
 
 select#removableAllergy.form-control>option.removeInstruction:hover {
@@ -74,11 +74,15 @@ select#removableAllergy.form-control>option.removeInstruction:hover {
 select#allergyOptions.form-control>option:hover {
     background-color: rgba(41, 32, 26, 0.55);
     border-radius: 3px;
+    font-weight: 300;
+    color: rgba(243, 242, 242, 1);
 }
 
 select#removableAllergy.form-control>option:hover {
-    background-color: rgba(245, 236, 229, 0.7);
+    background-color: rgba(217, 83, 79, 0.78);
     border-radius: 3px;
+    color: #501c1c;
+    font-weight: 300;
 }
 
 ul {
@@ -94,9 +98,11 @@ label, li.notAllergic::first-letter {
 }  
 
 h3 {
-    font-size: 14px;
+    width: 30%;
+    font-size: 1em;
 	margin-top: .8em;
     cursor: pointer;
+    position: relative;
 }	
 
 h4 {
@@ -115,15 +121,18 @@ h2 {
     left: 3%;
 }
 
+li.dishDetails {
+    line-height: .5em;
+}
+
 .strikeThru {
 	text-decoration: line-through;
-    margin-bottom: -.6em;
 }
 
 span#allergyWarning {
 	position: relative;
     left: 29%;
-    top: -.6em;
+    top: -1.5em;
     font-size: 1.1em;
     font-weight: 400;
     font-variant: all-small-caps;
@@ -134,6 +143,7 @@ span#allergyWarning {
 p.dishDetails {
     margin-bottom: 1.7em !important;
     cursor: pointer;
+    line-height: 1.5em;
 }
 
 .clientAllergies {

@@ -25,11 +25,11 @@ import { PopupPicsComponent } from './popup-pics.component';
           <select multiple class="form-control" id="allergyOptions" [(ngModel)]="allergy.value" 
           (ngModelChange)="allergyCheck(allergy.value[0]); allergy.value=''">
             <option class="instruction" value="" disabled>Select All Applicable Allergies: </option>
-            <option *ngFor="let allergy of allergens" [ngValue]="allergy">
+            <option *ngFor="let allergy of allergens" [ngValue]="allergy" (click)="hasAllergies = true">
               {{allergy.value}}
             </option>
           </select>
-          <div *ngIf="this.customerAllergies.length">
+          <div *ngIf="hasAllergies || customerAllergies?.length >= 1">
             <select multiple class="form-control" id="removableAllergy" [(ngModel)]="allergy.value" 
               (ngModelChange)="removeAllergy(allergy.value[0]); allergy.value=''">
               <option class="removeInstruction" value="" disabled>Click to Remove an Allergy: </option>
@@ -45,7 +45,7 @@ import { PopupPicsComponent } from './popup-pics.component';
         <div *ngIf="[(dish?.allergic)?.susceptible]; then clientAllergies else noAllergy"></div>
         <ng-template #clientAllergies>
     		  <ul *ngFor="let dishAllergies of dish?.allergic">
-      			<li>
+      			<li class="dishDetails">
               <h3 [ngClass]="strikeThru" (click)="viewDishPic(dish)">
               {{dish?.name}}
               </h3>
@@ -80,7 +80,8 @@ import { PopupPicsComponent } from './popup-pics.component';
 export class MenuComponent implements OnInit {
 
   allergyChecker: boolean = false;
-  customerAllergies = this.menuService.allergies;
+  hasAllergies: boolean = false;
+  customerAllergies: Allergy[] = [];
   private allergens = [
   	{id: 0, value: 'eggs', type: 'eggs', sensitivity: false},
   	{id: 1, value: 'fish', type: 'fish', sensitivity: false},
@@ -92,17 +93,21 @@ export class MenuComponent implements OnInit {
   	{id: 7, value: 'treenuts', type: 'treenuts', sensitivity: false}
   ];
   caution: Array<Allergy[]>;
-  private dishes: Menu[] = [];
+  @Input() dishes: Menu[] = [];
   warning = " **This dish contains ";
 
   constructor(private route: ActivatedRoute, private menuService: MenuService,
   	          private router: Router, private detect: ChangeDetectorRef, 
-              private wiki: PopupWikiService, private dishPopup: PopupPicsComponent) { 
-  }
+              private wiki: PopupWikiService, private dishPopup: PopupPicsComponent) 
+              {
+                if(this.menuService.allergies.length) {
+                  this.customerAllergies = this.menuService.getAllergies();
+                } 
+              }
 
   ngOnInit() {
     if(this.menuService.theMenu().length) {
-      this.dishes = this.menuService.theMenu()[0];
+      this.dishes = this.menuService.theMenu();
       for (var i = 0; i < this.allergens.length; i++) {
         if (this.menuService.allergies.find((thing: any) => thing ==  this.allergens[i].type )) {   
           this.allergens[i].sensitivity = true;
@@ -121,17 +126,20 @@ export class MenuComponent implements OnInit {
   }
 
   allergyCheck(allergy) {
-    for (var i = 0; i < this.dishes.length; i++) {
-      if (allergy['type'] == this.dishes[i].allergens) {
-        let allergicTo = this.dishes[i].id;
-        let caution = { susceptibleTo: allergy['type'], susceptible: true };
-        this.dishes[allergicTo]['allergic'][0] = caution;
-        this.menuService.updateMenu(this.dishes[allergicTo]);
-        this.detect.markForCheck();
+    if(!this.customerAllergies.find((allergy: Allergy) => allergy.id !== allergy.id)) { 
+      allergy['sensitivity'] = true;
+      this.menuService.setAllergies(allergy);
+      this.customerAllergies = this.menuService.getAllergies(); 
+      for (var i = 0; i < this.dishes.length; i++) {
+        if (allergy['type'] == this.dishes[i].allergens) {
+          let allergicTo = this.dishes[i].id;
+          let caution = { susceptibleTo: allergy['type'], susceptible: true };
+          this.dishes[allergicTo]['allergic'][0] = caution;
+          this.menuService.updateMenu(this.dishes[allergicTo]);
+          this.detect.markForCheck();
+        }
       }
-    }
-    allergy['sensitivity'] = true;
-    this.menuService.setAllergies(allergy);
+    }  
     this.detect.markForCheck();
   }
 
@@ -154,6 +162,12 @@ export class MenuComponent implements OnInit {
     this.menuService.dishToView(dish);
     this.router.navigate([{ outlets: { dishPopup: ['viewDish'] } }]);
   }
+
+  // lookUp(term, pert) {
+  //   console.log(term.path[0]);
+  //   console.log(Array(pert.split(" ")));
+        // console.log(pert.find(thing => thing == term));
+    // console.log(pert[pert.indexOf(term)])
 
   lookUp(term) {
     if(term.length !< 15) {

@@ -55,7 +55,7 @@ export class MenuService {
 	updateMenu(allergicItem) {
 		let originalItem = this.menuSubject.value.indexOf(this.userMenu[0][allergicItem.id]);
 		this.userMenu.splice(originalItem, -1);
-    	this.menuSubject.next(this.userMenu);
+    	this.menuSubject.next(this.userMenu[0]);
 	}
 
 	dishToView(dish) {
@@ -87,10 +87,9 @@ export class MenuService {
 
 	makeReservation(guestDetails, reservationTime) {
 		let confirm = new Reservation(guestDetails.name, guestDetails.party,
-		 guestDetails.myDate.formatted, reservationTime, this.allergySubject.value);
+			guestDetails.myDate.formatted, reservationTime, this.allergySubject.value);
 		this.reservation.push(confirm);
 	    this.reserveSubject.next(this.reservation);
-	    this.confirmed = true;
 	} 
 
 	getReservation() {
