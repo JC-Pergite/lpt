@@ -1,9 +1,80 @@
-.sideInfo {
+.aboutInfo {
     background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-lunch.jpg);
     background-attachment: fixed;
     background-size: cover;
-    min-height: 583px;
+    min-height: 550px;
     height: 100%;
     color: gainsboro;
     margin-top: -1.6em;
 }
+
+.aboutContainer {
+	background-color: rgba(33, 28, 25, 0.68);
+    border-radius: 6px;
+	width: 40%;
+    top: 11em;
+    height: 23.5em;
+    position: relative;
+    left: 30%;
+    text-align: center;
+}
+
+.reverse {
+	color: rgba(248, 248, 255, 0.6);
+	border-bottom-color: #6c6ce2;
+	opacity: .60;
+}
+
+.switch {
+	opacity: .60;
+	color: rgba(248, 248, 255, 0.6);
+	border-bottom-color: #8a8783;
+}
+
+.aboutChoice:not(:hover) {
+	opacity: .60;
+	color: ghostwhite;
+	border-bottom-color: #6c6ce2;
+}
+
+h3.aboutChoice {
+	cursor: pointer;
+}
+
+h3 {
+	font-size: 1.7em !important;
+	color: #6c6ce2;
+	border-bottom: 1px solid;
+	border-bottom-color: #8a8783;
+}
+
+h3.aboutMsg {
+    width: 9em;
+    margin-left: 25%;
+    margin-bottom: -.15em;
+    padding-top: 1.3em;
+}
+
+h3.aboutChef {
+	width: 6.5em;
+	margin-left: 32%;
+}
+
+p {
+	padding: 1.4em;
+}
+
+p:first-letter {
+	font-size: 1.4em;
+}
+
+p.message {
+	font-size: 1.2em;
+    padding-top: 3em;
+}
+
+p.bio {
+   font-size: 1.1em;	
+}
+
+

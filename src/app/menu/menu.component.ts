@@ -163,12 +163,6 @@ export class MenuComponent implements OnInit {
     this.router.navigate([{ outlets: { dishPopup: ['viewDish'] } }]);
   }
 
-  // lookUp(term, pert) {
-  //   console.log(term.path[0]);
-  //   console.log(Array(pert.split(" ")));
-        // console.log(pert.find(thing => thing == term));
-    // console.log(pert[pert.indexOf(term)])
-
   lookUp(term) {
     if(term.length !< 15) {
       this.wiki.searchTerm(term);
