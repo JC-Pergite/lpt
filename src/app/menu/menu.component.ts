@@ -42,19 +42,32 @@ import { PopupPicsComponent } from './popup-pics.component';
       </fieldset>
     </div>  
     	<div *ngFor="let dish of dishes">
-    		<ul>
-    			<li>
-            <h3 [ngClass]="{'strikeThru': dish?.allergic[0]?.susceptible}" (click)="viewDishPic(dish)">
-            {{dish?.name}}
-            </h3>
-            <span id="allergyWarning" *ngIf="dish?.allergic[0]?.susceptible">
-                {{warning}} {{dish?.allergic[0]?.susceptibleTo}}
-            </span>
-    				<p class="dishDetails" [innerHTML]="dish?.description | clickify"
-              (click)="lookUp($event.toElement.innerHTML)">
-            </p>
-    			</li>
-    		</ul>
+        <div *ngIf="[(dish?.allergic)?.susceptible]; then clientAllergies else noAllergy"></div>
+        <ng-template #clientAllergies>
+    		  <ul *ngFor="let dishAllergies of dish?.allergic">
+      			<li>
+              <h3 [ngClass]="strikeThru" (click)="viewDishPic(dish)">
+              {{dish?.name}}
+              </h3>
+              <span id="allergyWarning" *ngIf="dishAllergies.susceptible">
+                  {{warning}} {{dishAllergies.susceptibleTo}}
+              </span>
+      				<p class="dishDetails" [innerHTML]="dish?.description | clickify"
+                (click)="lookUp($event.toElement.innerHTML)">
+              </p>
+      			</li>
+      		</ul>
+        </ng-template>
+        <ng-template #noAllergy>
+          <ul>
+            <li>
+              <h3 (click)="viewDishPic(dish)">{{dish?.name}}</h3>
+              <p class="dishDetails" [innerHTML]="dish?.description | clickify"
+                (click)="lookUp($event.toElement.innerHTML)">
+              </p>
+            </li>
+          </ul>
+        </ng-template>  
         <router-outlet name="dishPopup"></router-outlet>
       </div>
         <router-outlet name="wikiPopup"></router-outlet>
@@ -89,7 +102,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     if(this.menuService.theMenu().length) {
-      this.dishes = this.menuService.theMenu();
+      this.dishes = this.menuService.theMenu()[0];
       for (var i = 0; i < this.allergens.length; i++) {
         if (this.menuService.allergies.find((thing: any) => thing ==  this.allergens[i].type )) {   
           this.allergens[i].sensitivity = true;

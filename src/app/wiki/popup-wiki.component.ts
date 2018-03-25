@@ -35,7 +35,7 @@ import { PopupWikiService } from './popup-wiki.service';
 })
 export class PopupWikiComponent implements OnInit {
   @HostBinding('style.display')   display = 'flex';
-  @HostBinding('style.position')  position = 'static';
+  @HostBinding('style.position')  position = 'fixed';
 
   dish: string[];
   description: Array<string>;

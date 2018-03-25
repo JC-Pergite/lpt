@@ -4,6 +4,7 @@ import { FormArray, FormControl,
 import { IMyDpOptions, IMyDateModel } from 'angular4-datepicker/src/my-date-picker/interfaces';
 import { Allergy } from '../shared/allergy';
 import { MenuService } from '../menu/menu.service';
+import { Reservation } from '../shared/reservation';
 
 @Component({
   selector: 'lpt-contact',
@@ -14,16 +15,22 @@ import { MenuService } from '../menu/menu.service';
 export class ContactComponent implements OnInit {
 
 	reserve: FormGroup;
+  reservationTime: string;
+  confirmation: Reservation;
   public time = { hour: 12, minute: 0 };
   public myDatePickerOptions: IMyDpOptions = {
             dateFormat: 'mm/dd/yyyy',
   }; 
-  public dinner: boolean = false;
+  public dinner: boolean = null;
   public meal: Array<string> = ['Lunch', 'Dinner'];
   allergies: Allergy[];
 
   constructor(private fb: FormBuilder, private menuService: MenuService,
-              private detect: ChangeDetectorRef) { }
+              private detect: ChangeDetectorRef) { 
+                if(this.menuService.reservation.length) {
+                  this.confirmation = this.menuService.getReservation()[0];
+                }
+  }
 
   ngOnInit() {
    	this.reserve = this.fb.group({
@@ -31,21 +38,10 @@ export class ContactComponent implements OnInit {
      	party: ['', [Validators.required] ],
       myDate: [null, Validators.required],
     });
-    this.allergyList();
 	}
 
   get name() { return this.reserve.get('name'); }
   get party() { return this.reserve.get('party'); }
-
-  allergyList() {
-    this.allergies = this.menuService.getAllergies();
-    this.detect.markForCheck();
-  }
-
-  onSubmit({ value, valid }: { value: string, valid: boolean }) {
-    	console.log('Reservation Info: ', value);
-      console.log('Guest Allergies: ', this.allergies);
-  }
 
   setDate(): void {
     let date = new Date();
@@ -63,12 +59,22 @@ export class ContactComponent implements OnInit {
     this.detect.markForCheck();
   }
 
+  mealTime () {
+    if(this.dinner == false){
+      this.time = { hour: 13, minute: 0 };
+    } 
+    else {
+      this.time = { hour: 19, minute: 0 };
+    }
+    this.detect.markForCheck();
+  };
+
   ctrl = new FormControl('', (control: FormControl) => {
     const value = control.value;
     if (!value) {
       return null;
     }
-    if(!this.dinner) {
+    if(!this.dinner && this.dinner != null) {
       if (value.hour < 12) {
         return {tooEarly: true};
       }
@@ -78,7 +84,7 @@ export class ContactComponent implements OnInit {
     }
 
     else {
-       if (value.hour < 19) {
+       if (value.hour < 19 && this.dinner != null) {
         return {tooEarly: true};
       }
       if (value.hour > 23) {
@@ -87,5 +93,24 @@ export class ContactComponent implements OnInit {
     }
     return null;
   });
+
+  allergyList() {
+    this.allergies = this.menuService.getAllergies();
+    this.detect.markForCheck();
+  }
+
+  onSubmit({ value, valid }: { value: string, valid: boolean }) {
+      this.allergyList();
+      if(this.ctrl.value['minute'] < 10) {
+        let minute = 0 + '' + this.ctrl.value['minute'];
+        this.reservationTime = "" + this.ctrl.value['hour'] + ':' + minute;
+      }
+      else {
+        this.reservationTime = "" + this.ctrl.value['hour'] + ':' + this.ctrl.value['minute'] + "";
+      }
+      this.menuService.makeReservation(value, this.reservationTime);
+      this.confirmation = this.menuService.getReservation()[0];
+      this.detect.markForCheck();
+  }
 
 }

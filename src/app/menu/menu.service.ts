@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Menu } from '../shared/menu';
 import { Allergy } from '../shared/allergy';
+import { Reservation } from '../shared/reservation';
 
 @Injectable() 
 
@@ -12,6 +13,10 @@ export class MenuService {
 	private menuSubject: BehaviorSubject<any> = new BehaviorSubject<Menu[]>([]);
     public menuChanges = this.menuSubject.asObservable().distinctUntilChanged();
     private userMenu: Menu[] = [];
+
+    public reservation: Reservation[] = [];
+    private reserveSubject: BehaviorSubject<any> = new BehaviorSubject<Reservation[]>([]);
+    public guestReservation = this.reserveSubject.asObservable().distinctUntilChanged();
 
   	private dishSubject: BehaviorSubject<any> = new BehaviorSubject<Menu[]>([]);
     public selectedDish = this.dishSubject.asObservable().distinctUntilChanged();
@@ -40,6 +45,13 @@ export class MenuService {
     	return this.menuSubject.value;
 	}
 
+	reserve(reservation, time){
+		let confirm = new Reservation(reservation.name, reservation.party, reservation.myDate.formatted,
+			time, this.allergySubject.value);
+		this.reservation.push(confirm);
+
+	}
+
 	updateMenu(allergicItem) {
 		let originalItem = this.menuSubject.value.indexOf(this.userMenu[0][allergicItem.id]);
 		this.userMenu.splice(originalItem, -1);
@@ -47,7 +59,6 @@ export class MenuService {
 	}
 
 	dishToView(dish) {
-		console.log(dish);
 	    this.dishSubject.next(dish);
 	} 
 
@@ -73,5 +84,17 @@ export class MenuService {
 	      }
 		}
 	}	
+
+	makeReservation(guestDetails, reservationTime) {
+		let confirm = new Reservation(guestDetails.name, guestDetails.party,
+		 guestDetails.myDate.formatted, reservationTime, this.allergySubject.value);
+		this.reservation.push(confirm);
+	    this.reserveSubject.next(this.reservation);
+	    this.confirmed = true;
+	} 
+
+	getReservation() {
+	    return this.reserveSubject.value;
+	}
 
 }	

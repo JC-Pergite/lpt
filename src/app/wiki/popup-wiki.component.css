@@ -3,20 +3,19 @@
 }
 
 p {
-    font-size: 0.9em;
-    text-align: justify;
+    font-size: 0.8em;
+    text-align: center;
     color: #94a2ef;
 }
 
 div.modal.wiki {
     position: relative !important;
-    height: 40em;
     display: inline-flex;
-    margin-top: 6em;
+    margin-top: -5.8em;
     right: 0;
     bottom: 0;
-    left: 57%;
-    top: -49.5em;
+    left: 42.8em;
+    top: -43.5em;
 }
 
 div.modal-dialog {
@@ -31,16 +30,15 @@ h4.wikiTitle {
     font-size: 1em;
     color: #a4a4ff;
     border-bottom: 1px solid rgb(121, 125, 158);
-    padding-bottom: .5em;
 }
 
 div.modal-body.header {
     text-align: center;
-    margin-bottom: 2em;
+    padding-bottom: 1.85em;
 }
 
 div.modal-body {
-    height: 1.2em;
+    height: 1em;
 }
 
 ul.wiki{
@@ -64,12 +62,14 @@ li::first-letter {
 
 button.btn.btn-outline-danger {
     position: relative;
+    height: 3em;
     border-radius: 3px;
 }
 
 div.modal-footer {
     border-top: 1px solid #3c3d46;
     background-color: rgba(39, 43, 48, 0.7);
-    margin-top: 2em;
+    margin-top: 1.3em;;
     border-radius: 2px;
+    max-height: 6em;
 }
