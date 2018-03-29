@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, 
-  EventEmitter, Output, ViewChild  } from '@angular/core';
+          EventEmitter, Output, ViewChild  } from '@angular/core';
 import { Router, ActivatedRoute, Params }  from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -15,75 +15,7 @@ import { PopupInstructComponent } from './popup-instruct.component';
 
 @Component({
   selector: 'lpt-menu',
-  // templateUrl: './menu.component.html',
-  template: `
-  <div class="mainContainer">
-    <router-outlet name="guidePopup"></router-outlet>
-    <div class="theMenus">
-        <div *ngIf="this.lunch == true; then lunchh else dinner"></div>
-        <ng-template #dinner>
-          <h3 id="otherMeal" (click)="dineSelect(1)">{{meal[1]}}</h3>
-          <h2>{{this.meal[0]}}</h2>
-        </ng-template>
-        <ng-template #lunchh>
-          <h3 id="otherMeal" (click)="dineSelect(0)">{{meal[0]}}</h3>
-          <h2>{{this.meal[1]}}</h2>
-        </ng-template>
-      <div>
-        <div class="clientAllergies" [style.visibility]="allergyChecker ? 'hidden' : 'initial'">
-          <h4 (click)="allergyChecker = true">
-            Allergens
-          </h4>
-        </div>
-        <fieldset>
-          <div class="form-group" [ngClass]="{'mainAllergies': !allergyChecker}" #allergy>
-            <label for="exampleSelect2" (click)="allergyChecker = false">[ Done ]</label>
-            <select multiple class="form-control" id="allergyOptions" [(ngModel)]="allergy.value" 
-            (ngModelChange)="allergyCheck(allergy.value[0]); allergy.value=''">
-              <option class="instruction" value="" disabled>Select All Applicable Allergies: </option>
-              <option *ngFor="let allergy of allergens" [ngValue]="allergy" 
-              (click)="hasAllergies = true">
-                {{allergy.value}}
-              </option>
-            </select>
-            <div *ngIf="hasAllergies || customerAllergies?.length >= 1">
-              <select multiple class="form-control" id="removableAllergy" [(ngModel)]="allergy.value" 
-                (ngModelChange)="removeAllergy(allergy.value[0]); allergy.value=''">
-                <option class="removeInstruction" value="" disabled>
-                  Click to Remove an Allergy: 
-                </option>
-                <option *ngFor="let allergy of customerAllergies" [ngValue]="allergy">
-                  {{allergy.value}}
-                </option>
-              </select>
-            </div>
-          </div>
-        </fieldset>
-      </div>  
-    	<div class="dishes" *ngFor="let dish of dishes">
-        <div *ngIf="[(dish?.allergic)?.susceptible]; then clientAllergies"></div>
-        <ng-template #clientAllergies>
-    		  <ul *ngFor="let dishAllergies of dish?.allergic">
-      			<li class="dishDetails">
-              <h3 class="dishName" [ngClass]="{'strikeThru': dishAllergies.susceptible}" 
-                (click)="viewDishPic(dish)">
-              {{dish?.name}}
-              </h3>
-              <span id="allergyWarning" *ngIf="dishAllergies.susceptible">
-                  {{warning}} {{dishAllergies.susceptibleTo}}
-              </span>
-      				<p class="dishDetails" [innerHTML]="dish?.description | clickify"
-                (click)="lookUp($event.toElement.innerHTML)">
-              </p>
-      			</li>
-      		</ul>
-        </ng-template>
-        <router-outlet name="dishPopup"></router-outlet>
-      </div>
-      <router-outlet name="wikiPopup"></router-outlet>
-  	</div>
-  </div>
-	`,
+  templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush  
 })
