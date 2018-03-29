@@ -25,6 +25,7 @@ div.modal-dialog {
 
 div.modal-content.wiki {
     background-color: rgba(239, 231, 218, 0.58);
+    font-family: 'Raleway', sans-serif;
 }
 
 h4.wikiTitle {

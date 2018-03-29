@@ -14,7 +14,7 @@ p.guestDetails {
     font-style: italic;
     margin: 2em 2em 2em 2em;
     color: rgba(240, 255, 255, 0.92);
-    text-shadow: 1px 1px 5px #e1e4d8;
+    text-shadow: 1px 1px 8px #e1e4d8;
     font-size: 1.5em;
 }
 
@@ -26,28 +26,33 @@ p.guestDetails:first-letter {
 div#tickTok.form-group {
 	position: absolute;
 	left: 85%;
-    top: 13.8em !important;
+    top: 10.3em !important;
     opacity: .70;
 }
 
 .whichMeal {
     border-radius: 3px;
     color: #bdb9b9;
+    text-shadow: 0px 0px 7px rgba(243, 232, 211, 0.55);
     position: relative;
     text-indent: -.2em;
     width: 13em;
     text-align: left;
-    left: 40%;
-    top: 2em;
+    left: 41%;
+    top: 1em;
     font-weight: 200;
 }
 
+p.beOurGuest {
+    font-family: 'Bilbo+Swash+Caps', cursive;
+}
+
 p.beOurGuest span:not(.dinnerLunch) {
-    line-height: 3.5em;
+    line-height: 4em;
 }
 
 span#allergyType:last-child::before {
-  content: ' and ';
+    content: ' and ';
 }
 
 span#allergyType {
@@ -168,14 +173,14 @@ div.col-lg-10.name {
 	width: 15em;
 	position: relative;
 	left: 12%;
-    top: 8.5em;
+    top: 4.5em;
 }
 
 #calendarChoice {
     position: absolute;
     width: 14em;
     left: 65%;
-    top: 42%;
+    top: 32.5%;
     opacity: .58;
     cursor: pointer;
 }

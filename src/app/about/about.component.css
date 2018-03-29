@@ -62,6 +62,7 @@ h3.aboutChef {
 
 p {
 	padding: 1.4em;
+    font-family: 'Bilbo+Swash+Caps', cursive;
 }
 
 p:first-letter {
@@ -76,5 +77,3 @@ p.message {
 p.bio {
    font-size: 1.1em;	
 }
-
-

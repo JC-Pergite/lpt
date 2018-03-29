@@ -13,9 +13,10 @@ import { MainModule } from './main.module';
 import { MenuDataService } from './menu-data.service';
 import { PopupWikiComponent } from './wiki/popup-wiki.component';
 import { PopupPicsComponent } from './menu/popup-pics.component';
+import { PopupInstructComponent } from './menu/popup-instruct.component';
 
 @NgModule({
-  declarations: [ AppComponent, PopupWikiComponent, PopupPicsComponent ],
+  declarations: [ AppComponent, PopupWikiComponent, PopupPicsComponent, PopupInstructComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

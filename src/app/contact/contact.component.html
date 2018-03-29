@@ -3,7 +3,7 @@
     <ng-template #validForm>
       <div id="reserveFormValid" class="reserveForm">
         <div class="reserveInfo">
-          <div *ngIf="confirmation?.allergies">
+          <div *ngIf="confirmation?.allergies.length">
             <p class="guestDetails allergicTo">chef Furansu will certainly make note of staying away from 
               mediocracy, 
              <span id="allergyType" *ngFor="let allergy of confirmation?.allergies"> {{allergy?.type}}, 

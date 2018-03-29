@@ -28,7 +28,6 @@ import { Component, OnInit } from '@angular/core';
 		</div>		
 	</div>
   `,
-  // templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {

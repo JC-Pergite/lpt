@@ -11,9 +11,9 @@ import { MenuService } from './menu.service';
         <div class="modal-body" *ngFor="let ingredient of dish">
           <img src="{{dish[0].photoUrl}}" alt="Responsive image">
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer noInstruct">
           <h5 class="popupTitle">{{dish[0].name}}</h5>
-          <button type="button" class="btn btn-outline-danger dishPic" data-dismiss="modal"
+          <button type="button" class="btn btn-outline-primary dishPic" data-dismiss="modal"
           (click)="closePopup()">
             Close
           </button>

@@ -1,15 +1,9 @@
-import { Allergy } from './allergy';
+import { Dishes } from './dishes';
 
 export class Menu {
 	constructor(
 		public id: number,
-		public name: string,
-		public description: string,
-		public photoUrl: string,
-		public allergens?: Allergy[],
-		public allergic?: {
-			susceptibleTo: number,
-			susceptible: boolean
-		}
+		public mealType: string,
+		public dishes: Dishes[]
 	){}
 }

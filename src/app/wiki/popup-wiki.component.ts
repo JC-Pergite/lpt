@@ -21,7 +21,7 @@ import { PopupWikiService } from './popup-wiki.service';
               </li>
             </ul>  
           </div>  
-          <div class="modal-footer">
+          <div class="modal-footer noInstruct">
             <p>{{description}}</p>
           </div>
           <button type="button" class="btn btn-outline-danger" 

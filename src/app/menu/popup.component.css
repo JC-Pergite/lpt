@@ -6,15 +6,19 @@ div.modal {
     position: fixed;
 }
 
+p#guideline {
+    font-family: 'Raleway', sans-serif;
+}
+
 div.modal-content {
     width: 70%;
     margin-left: -1%;
-    background-color: rgba(14, 14, 14, 0.78);
     border-left: 1px dotted papayawhip; 
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
+    background-color: rgba(234, 227, 223, 0.65);    
 }
 
 button.btn.btn-outline-danger {
@@ -41,11 +45,58 @@ img {
 }
 
 .modal-footer {
+    border-top: 1px solid #56585a;
+}
+
+#instruct-close.modal-footer.instruct {
+    height: 2em !important;
+    margin-top: -1em;
+}
+
+.modal-footer.noInstruct {
     height: 3em;
-    border-top: 1px dotted antiquewhite;
+}
+
+.modal-header {
+    margin-top: -1em;
+    font-family: 'Raleway', sans-serif;
+    border-bottom: 1px solid #6d7075;
 }
 
 h5.popupTitle {
     margin-right: 6.8em;
     color: #9a4711;
+}
+
+#instructions.modal-body {
+    position: relative;
+    padding: 15px;
+    border-radius: 4px;
+    color:  #282b31;
+    width: 100%;
+    margin-bottom: 1.8em;
+    margin-top: .8em;
+}
+
+span.what {
+    color: #3651e6;
+}
+
+h5.modal-title {    
+    font-size: 1.2em;
+    border-radius: 3px;
+    color: #282b31;
+    text-indent: .5em;
+    padding-left: 2.5em;
+    padding-top: .3em;
+    padding-bottom: .3em;
+}
+
+div#instruct-close > button.btn.btn-outline-primary {
+    margin-top: 1em;
+}
+
+.btn.btn-outline-primary:hover {
+    color: floralwhite;
+    background-color: #282b31 !important;
 }
