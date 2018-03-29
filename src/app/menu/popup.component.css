@@ -1,6 +1,6 @@
 div.modal {
     display: inline-block !important;
-    left: 47%;
+    left: 49%;
     top: 32%;
     height: 80%;
     position: fixed;
@@ -99,4 +99,16 @@ div#instruct-close > button.btn.btn-outline-primary {
 .btn.btn-outline-primary:hover {
     color: floralwhite;
     background-color: #282b31 !important;
+}
+
+@media all and (max-width: 63em) {
+    div.modal {
+    left: 51%;
+  }
+}
+
+@media all and (min-width: 73em) {
+    div.modal {
+    left: 45%;
+  }
 }

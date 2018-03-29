@@ -12,10 +12,11 @@ p {
 div.modal.wiki {
     position: relative !important;
     display: inline-flex;
-    margin-top: -5.8em;
+    width: 90%;
+    margin-top: -2.8em;
     right: 0;
     bottom: 0;
-    left: 42.8em;
+    left: 46.5em;
     top: -43.5em;
 }
 
@@ -78,4 +79,29 @@ div.modal-footer {
     margin-top: 1.3em;;
     border-radius: 2px;
     max-height: 6em;
+}
+
+
+@media all and (max-width: 68em) {
+    div.modal.wiki {
+        left: 43.8em;
+    }   
+}
+
+@media all and (min-width: 71.5em) {
+    div.modal.wiki {
+        left: 50.5em;
+    }   
+}
+
+@media all and (min-width: 74.5em) {
+    div.modal.wiki {
+        left: 51.5em;
+    }   
+}
+
+@media all and (min-width: 76em) {
+    div.modal.wiki {
+        left: 55.5em;
+    }   
 }
