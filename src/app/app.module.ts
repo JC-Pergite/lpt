@@ -6,8 +6,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { MyDatePickerModule } from 'angular4-datepicker/src/my-date-picker';
-
 //Feature Modules
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +24,6 @@ import { PopupInstructComponent } from './menu/popup-instruct.component';
     JsonpModule,
     NgbModule.forRoot(),
     NgbTimepickerModule.forRoot(),
-    MyDatePickerModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(MenuDataService),
     MainModule
