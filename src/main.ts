@@ -8,4 +8,4 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowser().bootstrapModuleFactory(AppModuleNgFactory, {enableLegacyTemplate: false});
+platformBrowserDynamic().bootstrapModuleFactory(AppModuleNgFactory, {enableLegacyTemplate: false});
