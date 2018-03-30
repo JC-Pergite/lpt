@@ -1,5 +1,5 @@
 import { enableProdMode } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser-dynamic';
+import { platformBrowser }    from '@angular/platform-browser';
 import { AppServerModuleNgFactory } from '../dist/ngfactory/src/app/app.module.ngfactory';
 
 import { environment } from './environments/environment';
