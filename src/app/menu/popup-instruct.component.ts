@@ -11,10 +11,10 @@ import { Router }                 from '@angular/router';
       </div>
       <div class="modal-body" id="instructions">
         <p id="guideline"><span class="what">Desire visuals?</span>
-          - Click on the menu item's name for a photo
+          - Click on the menu item's name for its photo
         </p>
         <p id="guideline"><span class="what">Unsure what a menu ingredient is?</span>
-          - Simply click it to activate in-app Wiki-searches
+          - Simply click it to activate the in-app Wiki-searches
         </p>
         <p id="guideline"><span class="what">Allergy concern?</span> - Click on "Allergens" to
           update the menu so it can notify you of any possible allergy-containing dishes

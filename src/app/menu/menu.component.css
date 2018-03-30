@@ -2,7 +2,7 @@
     background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-dinner.jpg);
     background-attachment: fixed;
     background-size: cover;
-    min-height: 583px;
+    min-height: 900px;
     height: 100%;
     margin-top: -1.6em;
 }
@@ -12,14 +12,14 @@
     border-radius: 3px;
     color: seashell;
     width: 50.6%;
-    height: 45em;
+    padding-bottom: 2em;
     position: relative;
     top: -3em;
 }
 
 .form-group {
     margin-left: 9em;
-    margin-top: -3em;
+    margin-top: -5em;
 }
 
 div.allergies {
@@ -128,9 +128,7 @@ h3.dishName:hover {
 }
 
 h4 {
-    font-size: .8em;
-    margin-left: 39%;
-    writing-mode: vertical-lr;
+    font-size: .7em;
     font-family: 'Raleway', sans-serif;
     position: relative;
     cursor: pointer;
@@ -138,7 +136,9 @@ h4 {
 }
 
 div.dishes {
-    margin-top: 21%;
+    margin-top: 13%;
+    position: relative;
+    top: 2.5em;
 }
 
 h2 {
@@ -150,6 +150,7 @@ h2 {
     border-top: 1px solid #a09a90;
     width: 4em;
     text-shadow: 0px 0px 7px rgba(243, 232, 211, 0.55);
+    margin-bottom: 3em;
 }
 
 h3#otherMeal {
@@ -194,23 +195,18 @@ p.dishDetails {
 }
 
 .clientAllergies {
-    opacity: .9;
-    left: 62%;
+    left: 52%;
     width: 5.1em;
     top: 2em;
-    border: 7px groove #5f77c7;
+    margin-top: -5.2em;
     height: 10.8em;
     position: relative;
-    font-size: .6em;
     transform: skew(4deg, -17deg);
-    border-radius: 3px;
-    background-color: #6b6b6d;
     cursor: pointer;
-    box-shadow: inset 0px 0px 8px 4px #61616d;
 }
 
 .clientAllergies:hover {
-    text-shadow: 0px 0px 7px rgba(243, 232, 211, 0.55);
+    text-shadow: 0px 0px 7px #f3e8d3;
 }
 
 .btn.btn-outline-danger {
@@ -237,59 +233,9 @@ li.notAllergic {
     font-weight: 700;
 }
 
-
-
-
-@media all and (max-width: 67em) {
-  .clientAllergies {
-    top: 1.2em;
-  }
-}
-
-@media all and (max-width: 65em) {
-  h3.dishName {
-    margin-top: -2em;
-  }
-}
-
-@media all and (max-width: 63.8em) {
-  .clientAllergies {
-    top: .2em;
-  }
-}
-
-@media all and (max-width: 62em) {
-  .clientAllergies {
-    top: -.1em;
-  }
-}
-
-@media all and (max-width: 60em) {
-  .clientAllergies {
-    top: -.7em;
-    left: 65%;
-  }
-}
-
-@media all and (max-width: 52em) {
-  .clientAllergies {
-    top: -.6em;
-    left: 75%;
-  }
-}
-
 @media all and (min-width: 72em) {
   .clientAllergies {
-    top: 3.3em;
-  }
-  h3.dishName {
-    margin-top: -4em;
-  }
-}
-
-@media all and (min-width: 73.8em) {
-  .clientAllergies {
-    top: 3.8em;
+    top: 3.5em;
   }
 }
 
