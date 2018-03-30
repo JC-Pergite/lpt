@@ -8,8 +8,21 @@
   },
   "exclude": [
     "test.ts",
-    "**/*.spec.ts"
-  ]
+    "**/*.spec.ts",
+     "**/*.ngfactory.ts",
+    "**/*.shim.ts",
+    "**/*.spec.ts",
+    "../node_modules/*"
+  ],
+  "include": [
+    "app/app.module.ts",
+    "app/main.ts"
+  ],
+   "angularCompilerOptions": { 
+    "debug": true,                        
+    "genDir": "./dist",
+    "entryModule": "./app/app.module#AppModule"
+  }  
 }
 
 

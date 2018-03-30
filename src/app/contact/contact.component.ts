@@ -25,7 +25,7 @@ export class ContactComponent implements OnInit {
   public meal: Array<string> = ['Lunch', 'Dinner'];
   allergies: Allergy[];
 
-  constructor(private fb: FormBuilder, private menuService: MenuService,
+  constructor(private fb: FormBuilder, public menuService: MenuService,
               private detect: ChangeDetectorRef) { 
                 if(this.menuService.reservation.length) {
                   this.confirmation = this.menuService.getReservation()[0];

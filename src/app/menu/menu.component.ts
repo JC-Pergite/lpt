@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
   allergyChecker: boolean = false;
   hasAllergies: boolean = false;
   customerAllergies: Allergy[] = [];
-  private allergens = [
+  public allergens = [
   	{id: 0, value: 'eggs', type: 'eggs', sensitivity: false},
   	{id: 1, value: 'fish', type: 'fish', sensitivity: false},
   	{id: 2, value: 'gluten', type: 'gluten', sensitivity: false},

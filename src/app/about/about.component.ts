@@ -5,14 +5,14 @@ import { Component, OnInit } from '@angular/core';
   template: `
 	<div class="aboutInfo">
 		<div class="aboutContainer">
-			<h3 class="aboutMsg" (click)="!chefBio = chefBio; active = true; isActive()" 
-      [ngClass]="{'aboutChoice' : !active, 'switch' : chefHover && active}" 
-      (mouseover)="msgHover=true" (mouseleave)="msgHover=false"> 
+			<h3 class="aboutMsg" (click)="!chefBio = [true]; active = [true]; isActive()" 
+      [ngClass]="{'aboutChoice' : active == [true], 'switch' : chefHover && active == [true]}" 
+      (mouseover)="msgHover=[true]" (mouseleave)="msgHover=[false]"> 
         Our Message
       </h3>
-			<h3 class="aboutChef" (click)="chefBio = !chefBio; active = false; isActive()"
+			<h3 class="aboutChef" (click)="chefBio = [false]; active = [false]; isActive()"
       [ngClass]="{'aboutChoice' : active, 'reverse' : msgHover && !active}" 
-       (mouseover)="chefHover=true" (mouseleave)="chefHover=false">
+       (mouseover)="chefHover=[true]" (mouseleave)="chefHover=[false]">
         Our Chef
       </h3>
 			<p class="message" *ngIf="active">
@@ -32,8 +32,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  private chefBio = [true, false]; 
-  private active: boolean;
+  public chefBio = [true, false]; 
+  public active: boolean[];
+  public msgHover: boolean[];
+  public chefHover: boolean[];
 
   constructor() { }
 
@@ -41,10 +43,10 @@ export class AboutComponent implements OnInit {
   }
 
   isActive() {
-   	if(this.active == false) {
+   	if(this.active == [false]) {
    		   	this.chefBio = [true];
    	}
-   	if(this.active == true) {
+   	if(this.active == [true]) {
    		   	this.chefBio = [false];
    	}
   }

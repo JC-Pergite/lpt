@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Router }                 from '@angular/router';
-import { Menu } from '../shared/menu';
+import { Dishes } from '../shared/dishes';
 import { MenuService } from './menu.service';
 
 @Component({
@@ -26,7 +26,7 @@ import { MenuService } from './menu.service';
 })
 export class PopupPicsComponent { 
   @HostBinding('style.display')   display = 'block';
-  @Input() dish: Menu[];
+  @Input() dish: Dishes[];
 
   constructor(private router: Router, private menuService: MenuService) { 
     this.dish = Array(this.menuService.getDishPic());
