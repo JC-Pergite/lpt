@@ -14,11 +14,7 @@
     "**/*.spec.ts",
     "../node_modules/*"
   ],
-  "include": [
-    "app/app.module.ts",
-    "app/main.ts"
-  ],
-   "angularCompilerOptions": { 
+  "angularCompilerOptions": { 
     "debug": true,                        
     "genDir": "./dist",
     "entryModule": "./app/app.module#AppModule"
