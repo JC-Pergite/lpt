@@ -3,23 +3,49 @@ nav.navbar.navbar-default {
     background-color: #272b30 !important;
 }
 
+div.navbar-header {
+    margin-left: 75%;
+}
+
+.active:hover {
+    background-color: rgba(228, 228, 234, 0.3);
+}
+
+.active:not(:hover) {
+    background-color: transparent;
+    border: none !important;
+}
+
 .navbar-default .navbar-collapse {
     margin-top: -4em;
     border-bottom-color: #989595;
+    display: inline-flex;
 }    
 
+li.nav-item {
+    margin-right: .2em;
+    font-size: .8em;
+}
+
+li.nav-item:hover {
+    background-color: rgba(228, 228, 234, 0.3);
+}
+
 a.mainLinks {
-	color: lavender;
+	color: lavender !important;
 	letter-spacing: .03em;
 	font-size: 1.3em;
 }
 
 a.mainLinks:hover, a.mainLinks:focus {
-	background-color: rgba(228, 228, 234, 0.3);
+    text-decoration: none !important;
+}
+
+hr {
+    border-top: 1px solid rgba(171, 168, 160, 0.59);
 }
 
 h1.navbar-brand {
-    top: -2em;
     text-align: center;
     position: relative;
     font-family: 'Niconne', cursive;

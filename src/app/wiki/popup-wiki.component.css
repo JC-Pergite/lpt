@@ -13,11 +13,12 @@ div.modal.wiki {
     position: relative !important;
     display: inline-flex;
     width: 90%;
+    min-width: 23em;
     margin-top: -5.8em;
     right: 0;
     bottom: 0;
     left: 46.5em;
-    top: -57.5em;
+    top: -54.5em;
 }
 
 div.modal-dialog {
@@ -49,7 +50,7 @@ ul.wiki{
 }
 
 li {
-	font-size: 1em;
+	font-size: .8em;
     color: #2b2f38;
 	list-style-type: circle;
     overflow-wrap: break-word;

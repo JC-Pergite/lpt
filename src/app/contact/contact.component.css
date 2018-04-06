@@ -112,7 +112,7 @@ p.meal {
     background-image: url(https://static.pexels.com/photos/157054/pexels-photo-157054.jpeg);
     background-attachment: fixed;
     background-size: cover;
-    min-height: 583px;
+    min-height: 700px;
     height: 100%;
     margin-top: -1.6em;
 }
@@ -123,8 +123,9 @@ input {
     text-align: center;
 }
 
-input:focus {
-	color: floralwhite;
+input::placeholder {
+	color: rgba(222, 221, 224, 0.74);
+    font-size: .8em;
 }
 
 input.ng-invalid:not(:focus) {

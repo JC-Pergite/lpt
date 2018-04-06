@@ -8,9 +8,16 @@
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
         <ul class="nav nav-tabs">
-          <li><a class="mainLinks" [routerLink]="['/about']">About</a></li>
-          <li><a class="mainLinks"  [routerLink]="['/menu']">Menu</a></li>
-          <li><a class="mainLinks" [routerLink]="['/contact-reserve']">Contact/Reserve</a></li>
+          <li class="nav-item">
+          <a class="nav-link mainLinks" data-toggle="tab" [routerLink]="['/about']">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mainLinks" data-toggle="tab"  [routerLink]="['/menu']">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mainLinks" data-toggle="tab"[routerLink]="['/contact-reserve']">Contact / Reserve
+            </a>
+          </li>
         </ul>
       </div>
   </div>

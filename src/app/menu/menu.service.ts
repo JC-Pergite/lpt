@@ -32,7 +32,7 @@ export class MenuService {
 	getMenu(): Observable<Menu[]>  {
 	   return this.http
 	   .get(`${this.menuUrl}`)
-	   .map((res:Response) => res.json() || {})
+	   .map((res:Response) => res.json().data || {})
        	.catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
   }
 

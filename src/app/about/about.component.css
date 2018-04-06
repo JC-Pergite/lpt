@@ -2,7 +2,7 @@
     background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-lunch.jpg);
     background-attachment: fixed;
     background-size: cover;
-    min-height: 550px;
+    min-height: 650px;
     height: 100%;
     color: gainsboro;
     margin-top: -1.6em;
@@ -20,19 +20,22 @@
 }
 
 .reverse {
-	color: rgba(248, 248, 255, 0.6);
 	border-bottom-color: #6c6ce2;
-	opacity: .60;
+	opacity: .70;
 }
 
 .switch {
-	opacity: .60;
-	color: rgba(248, 248, 255, 0.6);
+	opacity: .70;
 	border-bottom-color: #8a8783;
 }
 
+h3.aboutChoice:hover {
+	color: ghostwhite;
+	opacity: .90;
+}
+
 .aboutChoice:not(:hover) {
-	opacity: .60;
+	opacity: .50;
 	color: ghostwhite;
 	border-bottom-color: #6c6ce2;
 }
@@ -43,9 +46,9 @@ h3.aboutChoice {
 
 h3 {
 	font-size: 1.7em !important;
-	color: #6c6ce2;
 	border-bottom: 1px solid;
 	border-bottom-color: #8a8783;
+	color: #6c6ce2;
 }
 
 h3.aboutMsg {
@@ -57,6 +60,7 @@ h3.aboutMsg {
 
 h3.aboutChef {
 	width: 6.5em;
+	margin-top: .6em;
 	margin-left: 32%;
 }
 

@@ -1,7 +1,7 @@
 div.modal {
     display: inline-block !important;
     left: 49%;
-    top: 32%;
+    top: 18%;
     height: 80%;
     position: fixed;
 }
@@ -49,8 +49,8 @@ img {
 }
 
 #instruct-close.modal-footer.instruct {
-    height: 2em !important;
-    margin-top: -1em;
+    height: 3em !important;
+    margin-top: -3em;
 }
 
 .modal-footer.noInstruct {
@@ -64,7 +64,8 @@ img {
 }
 
 h5.popupTitle {
-    margin-right: 6.8em;
+    margin-left: .3em;
+    font-size: 1em;
     color: #9a4711;
 }
 
@@ -87,13 +88,21 @@ h5.modal-title {
     border-radius: 3px;
     color: #282b31;
     text-indent: .5em;
-    padding-left: 2.5em;
+    text-align: center;
     padding-top: .3em;
     padding-bottom: .3em;
 }
 
-div#instruct-close > button.btn.btn-outline-primary {
-    margin-top: 1em;
+div#instruct-close>button.btn.btn-outline-primary {
+    margin-top: .7em;
+}
+
+.btn-outline-primary {
+    border-color: floralwhite !important;
+}
+
+.btn-outline-primary:not(:hover) {
+    color: #282b31 !important;
 }
 
 .btn.btn-outline-primary:hover {

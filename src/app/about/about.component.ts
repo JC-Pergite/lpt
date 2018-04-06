@@ -5,21 +5,21 @@ import { Component, OnInit } from '@angular/core';
   template: `
 	<div class="aboutInfo">
 		<div class="aboutContainer">
-			<h3 class="aboutMsg" (click)="!chefBio = [true]; active = [true]; isActive()" 
-      [ngClass]="{'aboutChoice' : active == [true], 'switch' : chefHover && active == [true]}" 
-      (mouseover)="msgHover=[true]" (mouseleave)="msgHover=[false]"> 
+			<h3 class="aboutMsg" (click)="active = true; isActive()" 
+      [ngClass]="{'aboutChoice' : !active, 'switch' : chefHover && active == true}" 
+      (mouseover)="msgHover=true" (mouseleave)="msgHover=false"> 
         Our Message
       </h3>
-			<h3 class="aboutChef" (click)="chefBio = [false]; active = [false]; isActive()"
+			<h3 class="aboutChef" (click)="active = false; isActive()"
       [ngClass]="{'aboutChoice' : active, 'reverse' : msgHover && !active}" 
-       (mouseover)="chefHover=[true]" (mouseleave)="chefHover=[false]">
+       (mouseover)="chefHover=true" (mouseleave)="chefHover=false">
         Our Chef
       </h3>
-			<p class="message" *ngIf="active">
+			<p class="message" *ngIf="ourMsg == true && !chefBio">
 				There's but one goal that matters: transforming dining from being part of the rut,
 				to being part of the dream.
 			</p>
-			<p class="bio" *ngIf="chefBio && !active">
+			<p class="bio" *ngIf="chefBio == true && !active">
 				"A meal should be that of decadent simplicity, or minimilistic extravagance." - 
 				Chef Furansu brings his mantra to life in each and every one of his creations.
 				Born to a Japanese mother and a French father, Chef Furansu achieves the ideal mélange
@@ -32,10 +32,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  public chefBio = [true, false]; 
-  public active: boolean[];
-  public msgHover: boolean[];
-  public chefHover: boolean[];
+  public chefBio: boolean = false; 
+  public ourMsg: boolean = true;
+  public active: boolean = true;
+  public msgHover: boolean;
+  public chefHover: boolean;
 
   constructor() { }
 
@@ -43,11 +44,13 @@ export class AboutComponent implements OnInit {
   }
 
   isActive() {
-   	if(this.active == [false]) {
-   		   	this.chefBio = [true];
+   	if(this.active == true) {
+            this.chefBio = false;
+            this.ourMsg = true;
    	}
-   	if(this.active == [true]) {
-   		   	this.chefBio = [false];
+   	if(this.active == false) {
+       this.ourMsg = false;
+   		   	this.chefBio = true;
    	}
   }
 }
