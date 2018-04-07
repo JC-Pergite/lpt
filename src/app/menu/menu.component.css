@@ -1,5 +1,5 @@
 .mainContainer {
-    background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-dinner.jpg);
+    background-image: url('/assets/mainMenu.jpg');
     background-attachment: fixed;
     background-size: cover;
     min-height: 900px;

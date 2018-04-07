@@ -1,5 +1,5 @@
 .aboutInfo {
-    background-image: url(http://www.leffervescence.jp/wp/wp-content/themes/lfs/images/bg-lunch.jpg);
+    background-image: url('/assets/about.jpg');
     background-attachment: fixed;
     background-size: cover;
     min-height: 650px;
