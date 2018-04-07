@@ -6,6 +6,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Menu } from '../shared/menu';
 import { Allergy } from '../shared/allergy';
 import { Reservation } from '../shared/reservation';
+import { environment } from 'environments/environment';
+
+const Api_Url = environment.menuUrl;
 
 @Injectable() 
 
@@ -25,15 +28,13 @@ export class MenuService {
 	private allergySubject: BehaviorSubject<any> = new BehaviorSubject<Allergy[]>([]);
     public allergicReaction = this.allergySubject.asObservable().distinctUntilChanged();
 
-	private menuUrl = 'http://localhost:4200/lpt/menus';
-
 	constructor(private http: Http) {}
 
 	getMenu(): Observable<Menu[]>  {
 	   return this.http
-	   .get(`${this.menuUrl}`)
-	   .map((res:Response) => res.json().data || {})
-       	.catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
+	   .get(Api_Url + '/menus')
+	   .map((res:Response) => res.json() || {})
+       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
   }
 
 	setMenu(menu) {

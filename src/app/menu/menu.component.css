@@ -33,7 +33,7 @@ label > span#label {
 
 label {
     cursor: pointer;
-    margin-left: 43%;
+    margin-left: 46%;
 }
 
 label:first-child:hover{
@@ -41,7 +41,7 @@ label:first-child:hover{
 }
 
 select[multiple], select[size] {
-    width: 15em;
+    width: 13em;
 }
 
 .mainAllergies {
@@ -52,12 +52,13 @@ select[multiple], select[size] {
 select#allergyOptions.form-control {
     background-color: transparent;
     color: rgba(243, 242, 242, 0.85); 
+    margin-left: 2em;
 }
 
 select#removableAllergy.form-control {
     position: relative;
     margin-left: 15em;
-    margin-top: -5.8em;
+    margin-top: -6.1em;
     color: #463f3f;
     background-color: rgba(220, 207, 187, 0.37);
 }
@@ -180,8 +181,8 @@ li.dishDetails {
 span#allergyWarning {
 	position: relative;
     left: 29%;
-    top: -1.8em;
-    font-size: 1.1em;
+    top: -2.3em;
+    font-size: .9em;
     font-weight: 400;
     font-variant: all-small-caps;
     color: indianred;
@@ -198,11 +199,11 @@ p.dishDetails {
 .clientAllergies {
     left: 52%;
     width: 4.2em;
-    top: 2em;
+    top: 4.5em;
     margin-top: -5.2em;
     height: 10.8em;
     position: relative;
-    transform: skew(4deg, -17deg);
+    transform: skew(4deg, -18deg);
     cursor: pointer;
 }
 
@@ -232,16 +233,4 @@ li.notAllergic {
     left: 3.7%;
     top:  -1.4em;
     font-weight: 700;
-}
-
-@media all and (min-width: 72em) {
-  .clientAllergies {
-    top: 3.5em;
-  }
-}
-
-@media all and (min-width: 75em) {
-  .clientAllergies {
-    top: 4.4em;
-  }
 }

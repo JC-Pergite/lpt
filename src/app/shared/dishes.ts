@@ -8,7 +8,7 @@ export class Dishes {
 		public photoUrl: string,
 		public allergens?: Allergy[],
 		public allergic?: {
-			susceptibleTo: number,
+			susceptibleTo: string[],
 			susceptible: boolean
 		}
 	) {}	

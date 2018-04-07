@@ -23,7 +23,7 @@
         </label>
         <select multiple class="form-control" id="allergyOptions" [(ngModel)]="allergy.value" 
         (ngModelChange)="allergyCheck(allergy.value[0]); allergy.value=''">
-          <option class="instruction" value="" disabled>Select All Applicable Allergies: </option>
+          <option class="instruction" value="" disabled>Select Applicable Allergies: </option>
           <option *ngFor="let allergy of allergens" [ngValue]="allergy" 
           (click)="hasAllergies = true">
             {{allergy.value}}

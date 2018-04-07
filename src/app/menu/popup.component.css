@@ -18,7 +18,11 @@ div.modal-content {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
-    background-color: rgba(234, 227, 223, 0.65);    
+    background-color: rgba(234, 227, 223, 0.65); 
+}
+
+div.modal-content.alert {
+    height: 27em;   
 }
 
 button.btn.btn-outline-danger {
@@ -64,7 +68,7 @@ img {
 }
 
 h5.popupTitle {
-    margin-left: .3em;
+    margin-right: 4.5em;
     font-size: 1em;
     color: #9a4711;
 }
@@ -98,7 +102,7 @@ div#instruct-close>button.btn.btn-outline-primary {
 }
 
 .btn-outline-primary {
-    border-color: floralwhite !important;
+    border-color: #584e46 !important;
 }
 
 .btn-outline-primary:not(:hover) {

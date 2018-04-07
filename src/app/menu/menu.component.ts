@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, 
-          EventEmitter, Output, ViewChild  } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, 
+                      ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, Params }  from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-
 import { Menu } from '../shared/menu';
 import { Dishes } from '../shared/dishes';
 
@@ -63,9 +62,10 @@ export class MenuComponent implements OnInit {
     }
     else {
       this.menuService.getMenu()
-        .subscribe(menuItems => { 
+        .subscribe(menuItems => 
+        { 
           this.menu = menuItems;
-          this.dishes = this.menu[1].dishes; 
+          this.dishes = menuItems[1].dishes; 
           this.menuService.setMenu(this.menu);
           this.detect.markForCheck();
         });
@@ -88,12 +88,17 @@ export class MenuComponent implements OnInit {
       this.detect.markForCheck();
       for(var j = 0; j < this.menu.length; j++){ 
         for (var i = 0; i < this.menu[j].dishes.length; i++) {
-          if (allergy['type'] == this.menu[j].dishes[i].allergens) {
-            let allergicTo = this.menu[j].dishes[i].id;
-            let caution = { susceptibleTo: allergy['type'], susceptible: true };
-            this.menu[j].dishes[allergicTo]['allergic'][0] = caution;
-            this.menuService.updateMenu(this.menu[j].dishes[allergicTo]);
-            this.detect.markForCheck();
+            let currentDish = this.menu[j].dishes[i].allergens;
+          for (var k = 0; k < currentDish.length; k++) {
+            if (allergy['type'] == currentDish[k]) {
+              let allergicTo = this.menu[j].dishes[i].id;
+              var sensitiveTo = this.menu[j].dishes[allergicTo]['allergic'][0].susceptibleTo;
+              sensitiveTo.push(allergy['type']);
+              var caution = { susceptibleTo: sensitiveTo, susceptible: true };
+              this.menu[j].dishes[allergicTo]['allergic'][0] = caution;
+              this.menuService.updateMenu(this.menu[j].dishes[allergicTo]);
+              this.detect.markForCheck();
+            }  
           }
         }
       }
@@ -127,5 +132,4 @@ export class MenuComponent implements OnInit {
       this.router.navigate([{ outlets: { wikiPopup: ['wikiSearch'] } }]);
     }
   }
-
 }      

@@ -4,9 +4,10 @@
 }
 
 p {
-    font-size: 0.8em;
+    font-size: 0.7em;
     text-align: center;
     color: #94a2ef;
+    margin-bottom: .2em;
 }
 
 div.modal.wiki {
@@ -18,7 +19,7 @@ div.modal.wiki {
     right: 0;
     bottom: 0;
     left: 46.5em;
-    top: -54.5em;
+    top: -55.5em;
 }
 
 div.modal-dialog {
@@ -28,6 +29,7 @@ div.modal-dialog {
 div.modal-content.wiki {
     background-color: rgba(239, 231, 218, 0.58);
     font-family: 'Raleway', sans-serif;
+    max-height: 31em;
 }
 
 h4.wikiTitle {
@@ -72,6 +74,14 @@ button.btn.btn-outline-danger {
     position: relative;
     height: 3em;
     border-radius: 3px;
+    color: #921a16;
+    border-color: transparent;
+}
+
+button.btn.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
 }
 
 div.modal-footer {
@@ -79,7 +89,7 @@ div.modal-footer {
     background-color: rgba(39, 43, 48, 0.7);
     margin-top: 1.3em;;
     border-radius: 2px;
-    max-height: 6em;
+    max-height: 6.5em;
 }
 
 
@@ -98,13 +108,13 @@ div.modal-footer {
 
 @media all and (min-width: 71em) {
     div.modal.wiki {
-        left: 50.5em;
+        left: 43.5em;
     }   
 }
 
 @media all and (min-width: 74.5em) {
     div.modal.wiki {
-        left: 51.5em;
+        left: 42.5em;
     }   
 }
 
