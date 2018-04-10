@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
+    "outDir": "./public/out-tsc",
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
@@ -19,7 +19,7 @@
   },
   "angularCompilerOptions": { 
     "debug": true,                        
-    "genDir": "./dist",
+    "genDir": "./public",
     "entryModule": "./src/app/app.module#AppModule"
   }  
 }
