@@ -34,7 +34,6 @@ export class MenuService {
 	   return this.http
 	   .get(Api_Url + '/menus')
 	   .map((res:Response) => res.json() || {})
-	     .do(data => console.log(JSON.parse(JSON.stringify(data))))
        .catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
   }
 
