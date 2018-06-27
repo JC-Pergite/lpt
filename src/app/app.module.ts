@@ -5,6 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 //Third-Party Modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 //Feature Modules
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { PopupInstructComponent } from './menu/popup-instruct.component';
     NgbModule.forRoot(),
     NgbTimepickerModule.forRoot(),
     AppRoutingModule,
+    InMemoryWebApiModule.forRoot(MenuDataService),
     MainModule
   ],
   bootstrap: [ AppComponent ]

@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  nginx: 
+    build: .
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - "/nginx-custom.conf"
+    volumes_from:
+      - wordpress
+
+  wordpress:
+    image: "wordpress:php7.1-fpm"
+    volumes:
+      - "./:/var/www/html"
+    ports: ["9000:9000"]
+    environment:
+      WORDPRESS_DB_HOST: dbmaria:3306
+      WORDPRESS_DB_PASSWORD: bokuNoPassword
+    depends_on:
+      - dbmaria
+    links:
+      - dbmaria:mysql
+
+  dbmaria:
+    image: mariadb
+    ports: ["3306:3306"]
+    environment:
+      MYSQL_ROOT_PASSWORD: bokuNoPassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpressAdmin
+      MYSQL_PASSWORD: bokuNoWpPassword
+    volumes:
+      - "./db_data:/var/lib/mysql"

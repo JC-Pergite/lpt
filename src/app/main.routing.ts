@@ -5,7 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 
 const mainRoutes: Routes = [
-	{ path: '', redirectTo: '/menu', pathMatch: 'full'},		
+	{ path: '', redirectTo: 'menu', pathMatch: 'full'},		
 	{ path: 'menu', component: MenuComponent },
 	{ path: 'about', component: AboutComponent },
 	{ path: 'contact-reserve', component: ContactComponent }

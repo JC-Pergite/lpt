@@ -69,8 +69,8 @@ export class MenuComponent implements OnInit {
           this.menuService.setMenu(this.menu);
           this.detect.markForCheck();
         });
-      this.router.navigate([{ outlets: { guidePopup: ['instruct'] } }]);
-      this.detect.markForCheck();
+    this.router.navigate([{ outlets: { guidePopup: ['instruct'] } }]);        
+    this.detect.markForCheck();
     }
   }
 

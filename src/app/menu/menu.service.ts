@@ -8,8 +8,6 @@ import { Allergy } from '../shared/allergy';
 import { Reservation } from '../shared/reservation';
 import { environment } from 'environments/environment';
 
-const Api_Url = environment.menuUrl;
-
 @Injectable() 
 
 export class MenuService {
@@ -32,10 +30,10 @@ export class MenuService {
 
 	getMenu(): Observable<Menu[]>  {
 	   return this.http
-	   .get(Api_Url + '/menus')
-	   .map((res:Response) => res.json() || {})
+	   .get('http://localhost:4200/lpt/menus')
+	   .map((res:Response) => res.json().data || {})
        .catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
-  }
+    }
 
 	setMenu(menu) {
 	    this.menuSubject.next(menu);
