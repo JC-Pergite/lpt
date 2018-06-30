@@ -30,7 +30,7 @@ export class MenuService {
 
 	getMenu(): Observable<Menu[]>  {
 	   return this.http
-	   .get('http://localhost:4200/lpt/menus')
+	   .get('http://dreamydone.com/wp-json/wp/v2/menu?_embed')
 	   .map((res:Response) => res.json().data || {})
        .catch((error: any) => Observable.throw(error.json().error || 'Server error'));  
     }

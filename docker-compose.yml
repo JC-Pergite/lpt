@@ -18,7 +18,10 @@ services:
       - "./:/var/www/html"
     ports: ["9000:9000"]
     environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DB_HOST: dbmaria:3306
+      WORDPRESS_DB_USER: wordpressAdmin
       WORDPRESS_DB_PASSWORD: bokuNoPassword
     depends_on:
       - dbmaria
