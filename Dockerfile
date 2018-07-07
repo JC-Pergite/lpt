@@ -11,3 +11,8 @@ CMD [ "npm", "start" ]
 FROM nginx:1.13
 COPY --from=node src/app/dist/ /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+VOLUME /var/www/html
+RUN chown -R www-data:www-data /var/www/html
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT [ "entrypoint.sh" ]

@@ -1,35 +1,43 @@
-version: '2'
+version: '3'
 
 services:
-
-  nginx: 
+  nginx:  
+    container_name: lpt
     build: .
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - "/nginx-custom.conf"
-    volumes_from:
-      - wordpress
+      - "./logs/nginx:/var/log/nginx"
+      - "./wordpress:/var/www/html"
+    networks: ["wp_backend"]
+    links:
+      - wordpress  
 
   wordpress:
+    container_name: docker-wordpress
     image: "wordpress:php7.1-fpm"
+    ports:
+      - "9000:9000"
     volumes:
-      - "./:/var/www/html"
-    ports: ["9000:9000"]
+     - "./wordpress:/var/www/html"
+    restart: always
     environment:
       WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_TABLE_PREFIX: wp_
-      WORDPRESS_DB_HOST: dbmaria:3306
+      WORDPRESS_TABLE_PREFIX: lpt_
+      WORDPRESS_DB_HOST: dbmaria:3306 
       WORDPRESS_DB_USER: wordpressAdmin
       WORDPRESS_DB_PASSWORD: bokuNoPassword
     depends_on:
       - dbmaria
+    networks: ["wp_backend"]
     links:
       - dbmaria:mysql
 
   dbmaria:
-    image: mariadb
+    image: mariadb:latest
     ports: ["3306:3306"]
     environment:
       MYSQL_ROOT_PASSWORD: bokuNoPassword
@@ -37,4 +45,14 @@ services:
       MYSQL_USER: wordpressAdmin
       MYSQL_PASSWORD: bokuNoWpPassword
     volumes:
-      - "./db_data:/var/lib/mysql"
+      - "db_data:/var/lib/mysql"
+    networks: ["wp_backend"]
+
+volumes:
+  wordpress: 
+    driver: local
+  db_data:
+    driver: local
+networks: 
+  wp_backend:
+    driver: bridge
